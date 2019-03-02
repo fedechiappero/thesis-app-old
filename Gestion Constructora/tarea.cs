@@ -11,22 +11,23 @@ using MySql.Data.MySqlClient;
 
 namespace Gestion_Constructora
 {
-    public partial class sitio : Form
+    public partial class tarea : Form
     {
+
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
         private int controllsStatus = 0;
 
-        public sitio()
+        public tarea()
         {
             InitializeComponent();
-            sitio sitio = this;
+            tarea tarea = this;
             procedures proc = new procedures();
             //                 form         title           start position            resizable
-            proc.initilizeForm(sitio, "ABM de Sitios", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_sitio);
+            proc.initilizeForm(tarea, "ABM de Tareas", FormStartPosition.CenterScreen, false);
+            proc.initializeGrid(this.dgv_tarea);
         }
 
-        private void sitio_Load(object sender, EventArgs e)
+        private void tarea_Load(object sender, EventArgs e)
         {
             buscar();
         }
@@ -38,15 +39,15 @@ namespace Gestion_Constructora
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (dgv_sitio.SelectedRows.Count > 0)
+            if (dgv_tarea.SelectedRows.Count > 0)
             {
-                this.txt_sitio.Text = Convert.ToString(dgv_sitio.CurrentRow.Cells[1].Value);
+                this.txt_tarea.Text = Convert.ToString(dgv_tarea.CurrentRow.Cells[1].Value);
                 changeControlls(2);
             }
             else
             {
                 /*inform to the dumb user that he must select a record to edit*/
-            } 
+            }
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
@@ -60,23 +61,23 @@ namespace Gestion_Constructora
             {
                 case 0://inicio
                     buscar();
-                    this.pnl_sitio.Enabled = false;
+                    this.pnl_tarea.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
                     this.btn_editar.Enabled = true;
                     this.btn_eliminar.Enabled = true;
                     break;
                 case 1://nuevo
-                    this.pnl_sitio.Enabled = true;
-                    this.txt_sitio.Text = String.Empty;
-                    this.txt_sitio.Focus();
+                    this.pnl_tarea.Enabled = true;
+                    this.txt_tarea.Text = String.Empty;
+                    this.txt_tarea.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
                 case 2://editar
-                    this.pnl_sitio.Enabled = true;
-                    this.txt_sitio.Focus();
+                    this.pnl_tarea.Enabled = true;
+                    this.txt_tarea.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
@@ -94,9 +95,9 @@ namespace Gestion_Constructora
             controllsStatus = status;
         }
 
-        private void dgv_sitio_SelectionChanged(object sender, EventArgs e)
+        private void dgv_tarea_SelectionChanged(object sender, EventArgs e)
         {
-            this.txt_sitio.Text = Convert.ToString(this.dgv_sitio.CurrentRow.Cells[1].Value);
+            this.txt_tarea.Text = Convert.ToString(this.dgv_tarea.CurrentRow.Cells[1].Value);
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -104,13 +105,13 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(this.txt_sitio.Text.Trim());
+                    insertar(this.txt_tarea.Text.Trim());
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value), this.txt_sitio.Text);
+                    actualizar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value), this.txt_tarea.Text);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value));
+                    eliminar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
@@ -133,10 +134,10 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            dgv_sitio.Rows.Clear();
+            dgv_tarea.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
-            MySqlCommand consulta = new MySqlCommand("SELECT * FROM sitio WHERE sitio.descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
+            MySqlCommand consulta = new MySqlCommand("SELECT * FROM tarea WHERE tarea.descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@descripcion", "%" + Convert.ToString(busqueda) + "%");
             try
             {
@@ -147,7 +148,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_sitio.Rows.Add(reader[0], reader[1]);
+                        dgv_tarea.Rows.Add(reader[0], reader[1]);
                     }
                 }
                 procedures.conexion.Close();
@@ -157,13 +158,12 @@ namespace Gestion_Constructora
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-            
 
         private void insertar(string descripcion)
         {
             MySqlParameter prmDescripcion = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             prmDescripcion.Value = Convert.ToString(descripcion);
-            MySqlCommand mycmd = new MySqlCommand("INSERT INTO sitio (descripcion) VALUES (@descripcion)", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("INSERT INTO tarea (descripcion) VALUES (@descripcion)", procedures.conexion);
             mycmd.Parameters.Add(prmDescripcion);
             try
             {
@@ -183,7 +183,7 @@ namespace Gestion_Constructora
             MySqlParameter prmDescripcion = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             prmId.Value = Convert.ToInt32(id);
             prmDescripcion.Value = Convert.ToString(descripcion);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE sitio SET descripcion = @descripcion WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE tarea SET descripcion = @descripcion WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             mycmd.Parameters.Add(prmDescripcion);
             try
@@ -202,7 +202,7 @@ namespace Gestion_Constructora
         {
             MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
             prmId.Value = Convert.ToInt32(id);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE sitio SET activo = 0 WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE tarea SET activo = 0 WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             try
             {

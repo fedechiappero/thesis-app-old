@@ -10,7 +10,7 @@ namespace Gestion_Constructora
 {
     class procedures
     {
-        public static MySqlConnection conexion = new MySqlConnection("server=localhos; user id=root; database=constructora; password=root");
+        public static MySqlConnection conexion = new MySqlConnection("server=localhost; user id=root; database=constructora; password=root");
 
         //public static string conexion = "server=localhost; user id=root; database=constructora; password=root";
 

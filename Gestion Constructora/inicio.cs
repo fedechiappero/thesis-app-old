@@ -26,5 +26,11 @@ namespace Gestion_Constructora
             sitio sitio = new sitio();
             sitio.ShowDialog();
         }
+
+        private void aBMDeTareaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tarea tarea = new tarea();
+            tarea.ShowDialog();
+        }
     }
 }
