@@ -66,6 +66,12 @@
     <Compile Include="sitio.Designer.cs">
       <DependentUpon>sitio.cs</DependentUpon>
     </Compile>
+    <Compile Include="tarea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="tarea.Designer.cs">
+      <DependentUpon>tarea.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="inicio.resx">
       <DependentUpon>inicio.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +89,9 @@
     </Compile>
     <EmbeddedResource Include="sitio.resx">
       <DependentUpon>sitio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="tarea.resx">
+      <DependentUpon>tarea.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

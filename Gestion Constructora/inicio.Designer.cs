@@ -66,6 +66,7 @@
             this.aBMDeTareaToolStripMenuItem.Name = "aBMDeTareaToolStripMenuItem";
             this.aBMDeTareaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.aBMDeTareaToolStripMenuItem.Text = "ABM de Tarea";
+            this.aBMDeTareaToolStripMenuItem.Click += new System.EventHandler(this.aBMDeTareaToolStripMenuItem_Click);
             // 
             // inicio
             // 
