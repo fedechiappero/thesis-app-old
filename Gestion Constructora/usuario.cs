@@ -11,22 +11,22 @@ using MySql.Data.MySqlClient;
 
 namespace Gestion_Constructora
 {
-    public partial class empleado : Form
+    public partial class usuario : Form
     {
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
         private int controllsStatus = 0;
 
-        public empleado()
+        public usuario()
         {
             InitializeComponent();
-            empleado empleado = this;
+            usuario usuario = this;
             procedures proc = new procedures();
-            //                 form         title                start position            resizable
-            proc.initilizeForm(empleado, "ABM de Empleados", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_empleado);
+            //                 form         title                start position          resizable
+            proc.initilizeForm(usuario, "ABM de Usuarios", FormStartPosition.CenterScreen, false);
+            proc.initializeGrid(this.dgv_usuario);
         }
 
-        private void empleado_Load(object sender, EventArgs e)
+        private void usuario_Load(object sender, EventArgs e)
         {
             buscar();
         }
@@ -38,9 +38,9 @@ namespace Gestion_Constructora
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (dgv_empleado.SelectedRows.Count > 0)
+            if (dgv_usuario.SelectedRows.Count > 0)
             {
-                cargarControles(dgv_empleado);
+                cargarControles(dgv_usuario);
                 changeControlls(2);
             }
             else
@@ -74,7 +74,7 @@ namespace Gestion_Constructora
                     this.txt_nombre.Focus();
                     this.txt_usuario.Text = String.Empty;
                     this.txt_password.Text = String.Empty;
-                    this.cbo_nivel.SelectedIndex = 1;
+                    this.cbo_nivel.SelectedIndex = 0;
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
@@ -109,9 +109,9 @@ namespace Gestion_Constructora
             this.cbo_nivel.SelectedItem = Convert.ToString(dgv.CurrentRow.Cells[6].Value);
         }
 
-        private void dgv_empleado_SelectionChanged(object sender, EventArgs e)
+        private void dgv_usuario_SelectionChanged(object sender, EventArgs e)
         {
-            cargarControles(dgv_empleado);
+            cargarControles(dgv_usuario);
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -122,10 +122,10 @@ namespace Gestion_Constructora
                     insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_empleado.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                    actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_empleado.CurrentRow.Cells[0].Value));
+                    eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
@@ -148,10 +148,10 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            dgv_empleado.Rows.Clear();
+            dgv_usuario.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
-            MySqlCommand consulta = new MySqlCommand("SELECT persona.id, persona.nombre, persona.celular, persona.email, empleado.usuario, empleado.password, empleado.nivel_acceso FROM persona INNER JOIN empleado ON (persona.id = empleado.id) WHERE persona.nombre LIKE @nombre AND empleado.activo = 1", procedures.conexion);
+            MySqlCommand consulta = new MySqlCommand("SELECT persona.id, persona.nombre, persona.celular, persona.email, usuario.usuario, usuario.password, usuario.nivel_acceso FROM persona INNER JOIN usuario ON (persona.id = usuario.id) WHERE persona.nombre LIKE @nombre AND usuario.activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try
             {
@@ -162,7 +162,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_empleado.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
+                        dgv_usuario.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
                     }
                 }
                 procedures.conexion.Close();
@@ -192,7 +192,7 @@ namespace Gestion_Constructora
             prmUsuario.Value = Convert.ToString(usuario);
             prmPassword.Value = Convert.ToString(password);
             prmNivel.Value = Convert.ToInt16(nivel);
-            MySqlCommand cmdEmpleado = new MySqlCommand("INSERT INTO empleado (id, usuario, password, nivel_acceso) VALUES (@id, @usuario, @password, @nivel)", procedures.conexion);
+            MySqlCommand cmdEmpleado = new MySqlCommand("INSERT INTO usuario (id, usuario, password, nivel_acceso) VALUES (@id, @usuario, @password, @nivel)", procedures.conexion);
             cmdEmpleado.Parameters.Add(prmUsuario);
             cmdEmpleado.Parameters.Add(prmPassword);
             cmdEmpleado.Parameters.Add(prmNivel);
@@ -234,7 +234,7 @@ namespace Gestion_Constructora
             cmdPersona.Parameters.Add(prmCelular);
             cmdPersona.Parameters.Add(prmEmail);
 
-            MySqlCommand cmdEmpleado = new MySqlCommand("UPDATE empleado SET usuario = @usuario, password = @password, nivel_acceso = @nivel WHERE id = @id", procedures.conexion);
+            MySqlCommand cmdEmpleado = new MySqlCommand("UPDATE usuario SET usuario = @usuario, password = @password, nivel_acceso = @nivel WHERE id = @id", procedures.conexion);
             cmdEmpleado.Parameters.Add(prmId);
             cmdEmpleado.Parameters.Add(prmUsuario);
             cmdEmpleado.Parameters.Add(prmPassword);
@@ -256,7 +256,7 @@ namespace Gestion_Constructora
         {
             MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
             prmId.Value = Convert.ToInt32(id);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE empleado SET activo = 0 WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE usuario SET activo = 0 WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             try
             {

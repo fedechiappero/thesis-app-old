@@ -1,6 +1,6 @@
 ﻿namespace Gestion_Constructora
 {
-    partial class empleado
+    partial class usuario
     {
         /// <summary>
         /// Required designer variable.
@@ -37,29 +37,29 @@
             this.txt_busqueda = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnl_datos = new System.Windows.Forms.Panel();
+            this.cbo_nivel = new System.Windows.Forms.ComboBox();
+            this.txt_usuario = new System.Windows.Forms.TextBox();
+            this.txt_password = new System.Windows.Forms.TextBox();
+            this.txt_email = new System.Windows.Forms.TextBox();
+            this.txt_celular = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_nombre = new System.Windows.Forms.TextBox();
-            this.dgv_empleado = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txt_celular = new System.Windows.Forms.TextBox();
-            this.txt_email = new System.Windows.Forms.TextBox();
-            this.txt_password = new System.Windows.Forms.TextBox();
-            this.txt_usuario = new System.Windows.Forms.TextBox();
-            this.cbo_nivel = new System.Windows.Forms.ComboBox();
+            this.dgv_usuario = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.user = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nivel = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_busqueda.SuspendLayout();
             this.pnl_datos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_empleado)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_usuario)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_cancelar
@@ -158,6 +158,93 @@
             this.pnl_datos.Size = new System.Drawing.Size(373, 106);
             this.pnl_datos.TabIndex = 11;
             // 
+            // cbo_nivel
+            // 
+            this.cbo_nivel.FormattingEnabled = true;
+            this.cbo_nivel.Items.AddRange(new object[] {
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"});
+            this.cbo_nivel.Location = new System.Drawing.Point(326, 55);
+            this.cbo_nivel.Name = "cbo_nivel";
+            this.cbo_nivel.Size = new System.Drawing.Size(43, 21);
+            this.cbo_nivel.TabIndex = 12;
+            // 
+            // txt_usuario
+            // 
+            this.txt_usuario.Location = new System.Drawing.Point(52, 81);
+            this.txt_usuario.Name = "txt_usuario";
+            this.txt_usuario.Size = new System.Drawing.Size(125, 20);
+            this.txt_usuario.TabIndex = 11;
+            // 
+            // txt_password
+            // 
+            this.txt_password.Location = new System.Drawing.Point(245, 81);
+            this.txt_password.Name = "txt_password";
+            this.txt_password.Size = new System.Drawing.Size(125, 20);
+            this.txt_password.TabIndex = 10;
+            // 
+            // txt_email
+            // 
+            this.txt_email.Location = new System.Drawing.Point(52, 55);
+            this.txt_email.Name = "txt_email";
+            this.txt_email.Size = new System.Drawing.Size(175, 20);
+            this.txt_email.TabIndex = 9;
+            // 
+            // txt_celular
+            // 
+            this.txt_celular.Location = new System.Drawing.Point(52, 29);
+            this.txt_celular.Name = "txt_celular";
+            this.txt_celular.Size = new System.Drawing.Size(318, 20);
+            this.txt_celular.TabIndex = 8;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(233, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 13);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Nivel de Acceso:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(183, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Password:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(4, 84);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Usuario:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Email:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 32);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Celular:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -174,109 +261,22 @@
             this.txt_nombre.Size = new System.Drawing.Size(318, 20);
             this.txt_nombre.TabIndex = 1;
             // 
-            // dgv_empleado
+            // dgv_usuario
             // 
-            this.dgv_empleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_empleado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_usuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_usuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.celular,
             this.email,
             this.nombre,
-            this.usuario,
+            this.user,
             this.password,
             this.nivel});
-            this.dgv_empleado.Location = new System.Drawing.Point(11, 43);
-            this.dgv_empleado.Name = "dgv_empleado";
-            this.dgv_empleado.Size = new System.Drawing.Size(373, 175);
-            this.dgv_empleado.TabIndex = 10;
-            this.dgv_empleado.SelectionChanged += new System.EventHandler(this.dgv_empleado_SelectionChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 32);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Celular:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Email:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(4, 84);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Usuario:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(183, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Password:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(233, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(88, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Nivel de Acceso:";
-            // 
-            // txt_celular
-            // 
-            this.txt_celular.Location = new System.Drawing.Point(52, 29);
-            this.txt_celular.Name = "txt_celular";
-            this.txt_celular.Size = new System.Drawing.Size(318, 20);
-            this.txt_celular.TabIndex = 8;
-            // 
-            // txt_email
-            // 
-            this.txt_email.Location = new System.Drawing.Point(52, 55);
-            this.txt_email.Name = "txt_email";
-            this.txt_email.Size = new System.Drawing.Size(175, 20);
-            this.txt_email.TabIndex = 9;
-            // 
-            // txt_password
-            // 
-            this.txt_password.Location = new System.Drawing.Point(245, 81);
-            this.txt_password.Name = "txt_password";
-            this.txt_password.Size = new System.Drawing.Size(125, 20);
-            this.txt_password.TabIndex = 10;
-            // 
-            // txt_usuario
-            // 
-            this.txt_usuario.Location = new System.Drawing.Point(52, 81);
-            this.txt_usuario.Name = "txt_usuario";
-            this.txt_usuario.Size = new System.Drawing.Size(125, 20);
-            this.txt_usuario.TabIndex = 11;
-            // 
-            // cbo_nivel
-            // 
-            this.cbo_nivel.FormattingEnabled = true;
-            this.cbo_nivel.Items.AddRange(new object[] {
-            "5",
-            "4",
-            "3",
-            "2",
-            "1"});
-            this.cbo_nivel.Location = new System.Drawing.Point(326, 55);
-            this.cbo_nivel.Name = "cbo_nivel";
-            this.cbo_nivel.Size = new System.Drawing.Size(43, 21);
-            this.cbo_nivel.TabIndex = 12;
+            this.dgv_usuario.Location = new System.Drawing.Point(11, 43);
+            this.dgv_usuario.Name = "dgv_usuario";
+            this.dgv_usuario.Size = new System.Drawing.Size(373, 175);
+            this.dgv_usuario.TabIndex = 18;
+            this.dgv_usuario.SelectionChanged += new System.EventHandler(this.dgv_usuario_SelectionChanged);
             // 
             // id
             // 
@@ -302,10 +302,10 @@
             this.nombre.Name = "nombre";
             this.nombre.Width = 200;
             // 
-            // usuario
+            // user
             // 
-            this.usuario.HeaderText = "Usuario";
-            this.usuario.Name = "usuario";
+            this.user.HeaderText = "Usuario";
+            this.user.Name = "user";
             // 
             // password
             // 
@@ -319,11 +319,12 @@
             this.nivel.Name = "nivel";
             this.nivel.Visible = false;
             // 
-            // empleado
+            // usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(557, 338);
+            this.Controls.Add(this.dgv_usuario);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_eliminar);
@@ -331,15 +332,14 @@
             this.Controls.Add(this.btn_nuevo);
             this.Controls.Add(this.pnl_busqueda);
             this.Controls.Add(this.pnl_datos);
-            this.Controls.Add(this.dgv_empleado);
-            this.Name = "empleado";
-            this.Text = "empleado";
-            this.Load += new System.EventHandler(this.empleado_Load);
+            this.Name = "usuario";
+            this.Text = "usuario";
+            this.Load += new System.EventHandler(this.usuario_Load);
             this.pnl_busqueda.ResumeLayout(false);
             this.pnl_busqueda.PerformLayout();
             this.pnl_datos.ResumeLayout(false);
             this.pnl_datos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_empleado)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_usuario)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -357,7 +357,6 @@
         private System.Windows.Forms.Panel pnl_datos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_nombre;
-        private System.Windows.Forms.DataGridView dgv_empleado;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -368,11 +367,12 @@
         private System.Windows.Forms.TextBox txt_password;
         private System.Windows.Forms.TextBox txt_email;
         private System.Windows.Forms.TextBox txt_celular;
+        private System.Windows.Forms.DataGridView dgv_usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn celular;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn user;
         private System.Windows.Forms.DataGridViewTextBoxColumn password;
         private System.Windows.Forms.DataGridViewTextBoxColumn nivel;
     }

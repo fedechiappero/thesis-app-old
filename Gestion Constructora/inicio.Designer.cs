@@ -38,7 +38,11 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaDeCuentasPropiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +50,7 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.obrasToolStripMenuItem,
+            this.toolStripMenuItem1,
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -84,7 +89,7 @@
             this.ayudaToolStripMenuItem,
             this.acercaDeToolStripMenuItem,
             this.toolStripSeparator2,
-            this.empleadosToolStripMenuItem});
+            this.aBMDeUsuariosToolStripMenuItem});
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
             this.salirToolStripMenuItem.Text = "Salir";
@@ -118,12 +123,42 @@
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
             // 
-            // empleadosToolStripMenuItem
+            // aBMDeUsuariosToolStripMenuItem
             // 
-            this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.empleadosToolStripMenuItem.Text = "Empleados";
-            this.empleadosToolStripMenuItem.Click += new System.EventHandler(this.empleadosToolStripMenuItem_Click);
+            this.aBMDeUsuariosToolStripMenuItem.Name = "aBMDeUsuariosToolStripMenuItem";
+            this.aBMDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
+            this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.bancosToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 20);
+            this.toolStripMenuItem1.Text = "Administración y Finanzas";
+            // 
+            // bancosToolStripMenuItem
+            // 
+            this.bancosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aBMDeBancosToolStripMenuItem,
+            this.altaDeCuentasPropiasToolStripMenuItem});
+            this.bancosToolStripMenuItem.Name = "bancosToolStripMenuItem";
+            this.bancosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bancosToolStripMenuItem.Text = "Bancos";
+            // 
+            // aBMDeBancosToolStripMenuItem
+            // 
+            this.aBMDeBancosToolStripMenuItem.Name = "aBMDeBancosToolStripMenuItem";
+            this.aBMDeBancosToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.aBMDeBancosToolStripMenuItem.Text = "ABM de Bancos";
+            this.aBMDeBancosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeBancosToolStripMenuItem_Click);
+            // 
+            // altaDeCuentasPropiasToolStripMenuItem
+            // 
+            this.altaDeCuentasPropiasToolStripMenuItem.Name = "altaDeCuentasPropiasToolStripMenuItem";
+            this.altaDeCuentasPropiasToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
+            this.altaDeCuentasPropiasToolStripMenuItem.Text = "Alta de Cuentas Propias";
             // 
             // inicio
             // 
@@ -154,6 +189,10 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem acercaDeToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMDeUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem bancosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMDeBancosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem altaDeCuentasPropiasToolStripMenuItem;
     }
 }

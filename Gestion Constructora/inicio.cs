@@ -38,10 +38,16 @@ namespace Gestion_Constructora
             this.Dispose();
         }
 
-        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aBMDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            empleado empleado = new empleado();
-            empleado.ShowDialog();
+            usuario usuario = new usuario();
+            usuario.ShowDialog();
+        }
+
+        private void aBMDeBancosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            banco banco = new banco();
+            banco.ShowDialog();
         }
     }
 }
