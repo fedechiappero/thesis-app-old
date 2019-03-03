@@ -32,5 +32,16 @@ namespace Gestion_Constructora
             tarea tarea = new tarea();
             tarea.ShowDialog();
         }
+
+        private void salirDelSistemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void empleadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            empleado empleado = new empleado();
+            empleado.ShowDialog();
+        }
     }
 }
