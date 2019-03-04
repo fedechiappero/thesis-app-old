@@ -12,13 +12,13 @@ namespace Gestion_Constructora
 {
     public partial class inicio : Form
     {
-        public inicio()
+        public inicio(string usuario, int nivel)
         {
             InitializeComponent();
             inicio inicio = this;
             procedures proc = new procedures();
-            //                   form         title           start position               resizable
-            proc.initilizeForm(inicio, "Inicio", FormStartPosition.CenterScreen, false);
+            //                   form         title                                                start position               resizable
+            proc.initilizeForm(inicio, usuario + " | Nivel de acceso " + Convert.ToString(nivel), FormStartPosition.CenterScreen, false);
         }
 
         private void aBMSitioToolStripMenuItem_Click(object sender, EventArgs e)
