@@ -55,5 +55,11 @@ namespace Gestion_Constructora
             bancoCuenta bancoCuenta = new bancoCuenta();
             bancoCuenta.ShowDialog();
         }
+
+        private void altaDeChequerasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chequera chequera = new chequera();
+            chequera.ShowDialog();
+        }
     }
 }
