@@ -49,5 +49,11 @@ namespace Gestion_Constructora
             banco banco = new banco();
             banco.ShowDialog();
         }
+
+        private void altaDeCuentasPropiasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bancoCuenta bancoCuenta = new bancoCuenta();
+            bancoCuenta.ShowDialog();
+        }
     }
 }

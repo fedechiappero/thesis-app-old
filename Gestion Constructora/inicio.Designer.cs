@@ -32,6 +32,10 @@
             this.obrasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBMSitioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBMDeTareaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaDeCuentasPropiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -39,10 +43,6 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aBMDeBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaDeCuentasPropiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,55 +81,6 @@
             this.aBMDeTareaToolStripMenuItem.Text = "ABM de Tarea";
             this.aBMDeTareaToolStripMenuItem.Click += new System.EventHandler(this.aBMDeTareaToolStripMenuItem_Click);
             // 
-            // salirToolStripMenuItem
-            // 
-            this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.salirDelSistemaToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.ayudaToolStripMenuItem,
-            this.acercaDeToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.aBMDeUsuariosToolStripMenuItem});
-            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.salirToolStripMenuItem.Text = "Salir";
-            // 
-            // salirDelSistemaToolStripMenuItem
-            // 
-            this.salirDelSistemaToolStripMenuItem.Name = "salirDelSistemaToolStripMenuItem";
-            this.salirDelSistemaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.salirDelSistemaToolStripMenuItem.Text = "Cerrar Sesion";
-            this.salirDelSistemaToolStripMenuItem.Click += new System.EventHandler(this.salirDelSistemaToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
-            // 
-            // ayudaToolStripMenuItem
-            // 
-            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
-            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.ayudaToolStripMenuItem.Text = "Ayuda";
-            // 
-            // acercaDeToolStripMenuItem
-            // 
-            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
-            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.acercaDeToolStripMenuItem.Text = "Acerca de";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(149, 6);
-            // 
-            // aBMDeUsuariosToolStripMenuItem
-            // 
-            this.aBMDeUsuariosToolStripMenuItem.Name = "aBMDeUsuariosToolStripMenuItem";
-            this.aBMDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
-            this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
-            // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -159,6 +110,56 @@
             this.altaDeCuentasPropiasToolStripMenuItem.Name = "altaDeCuentasPropiasToolStripMenuItem";
             this.altaDeCuentasPropiasToolStripMenuItem.Size = new System.Drawing.Size(199, 22);
             this.altaDeCuentasPropiasToolStripMenuItem.Text = "Alta de Cuentas Propias";
+            this.altaDeCuentasPropiasToolStripMenuItem.Click += new System.EventHandler(this.altaDeCuentasPropiasToolStripMenuItem_Click);
+            // 
+            // salirToolStripMenuItem
+            // 
+            this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.salirDelSistemaToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.ayudaToolStripMenuItem,
+            this.acercaDeToolStripMenuItem,
+            this.toolStripSeparator2,
+            this.aBMDeUsuariosToolStripMenuItem});
+            this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.salirToolStripMenuItem.Text = "Salir";
+            // 
+            // salirDelSistemaToolStripMenuItem
+            // 
+            this.salirDelSistemaToolStripMenuItem.Name = "salirDelSistemaToolStripMenuItem";
+            this.salirDelSistemaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.salirDelSistemaToolStripMenuItem.Text = "Cerrar Sesion";
+            this.salirDelSistemaToolStripMenuItem.Click += new System.EventHandler(this.salirDelSistemaToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(161, 6);
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            this.acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            this.acercaDeToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.acercaDeToolStripMenuItem.Text = "Acerca de";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(161, 6);
+            // 
+            // aBMDeUsuariosToolStripMenuItem
+            // 
+            this.aBMDeUsuariosToolStripMenuItem.Name = "aBMDeUsuariosToolStripMenuItem";
+            this.aBMDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
+            this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
             // inicio
             // 

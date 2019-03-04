@@ -51,6 +51,12 @@
     <Compile Include="banco.Designer.cs">
       <DependentUpon>banco.cs</DependentUpon>
     </Compile>
+    <Compile Include="bancoCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="bancoCuenta.Designer.cs">
+      <DependentUpon>bancoCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="usuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </Compile>
     <EmbeddedResource Include="banco.resx">
       <DependentUpon>banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bancoCuenta.resx">
+      <DependentUpon>bancoCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="usuario.resx">
       <DependentUpon>usuario.cs</DependentUpon>
