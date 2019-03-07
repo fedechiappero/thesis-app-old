@@ -67,5 +67,11 @@ namespace Gestion_Constructora
             chequeEmision chequeEmision = new chequeEmision();
             chequeEmision.ShowDialog();
         }
+
+        private void aBMDeCuentasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            cuenta cuenta = new cuenta();
+            cuenta.ShowDialog();
+        }
     }
 }
