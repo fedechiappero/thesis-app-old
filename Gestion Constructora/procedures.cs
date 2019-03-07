@@ -37,5 +37,10 @@ namespace Gestion_Constructora
             grid.ScrollBars = ScrollBars.Vertical;
             grid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
+
+        public static string dateToMySQL(DateTimePicker dtp)
+        {
+            return Convert.ToString(dtp.Value.Year) + "-" + Convert.ToString(dtp.Value.Month) + "-" + Convert.ToString(dtp.Value.Day);
+        }
     }
 }

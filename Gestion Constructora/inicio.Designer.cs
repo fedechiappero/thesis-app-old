@@ -36,6 +36,8 @@
             this.bancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBMDeBancosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaDeCuentasPropiasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chequesPropiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.altaDeChequerasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -43,8 +45,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.chequesPropiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.altaDeChequerasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emisionDeChequesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,6 +116,22 @@
             this.altaDeCuentasPropiasToolStripMenuItem.Text = "Alta de Cuentas Propias";
             this.altaDeCuentasPropiasToolStripMenuItem.Click += new System.EventHandler(this.altaDeCuentasPropiasToolStripMenuItem_Click);
             // 
+            // chequesPropiosToolStripMenuItem
+            // 
+            this.chequesPropiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.altaDeChequerasToolStripMenuItem,
+            this.emisionDeChequesToolStripMenuItem});
+            this.chequesPropiosToolStripMenuItem.Name = "chequesPropiosToolStripMenuItem";
+            this.chequesPropiosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.chequesPropiosToolStripMenuItem.Text = "Cheques Propios";
+            // 
+            // altaDeChequerasToolStripMenuItem
+            // 
+            this.altaDeChequerasToolStripMenuItem.Name = "altaDeChequerasToolStripMenuItem";
+            this.altaDeChequerasToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.altaDeChequerasToolStripMenuItem.Text = "Alta de Chequeras";
+            this.altaDeChequerasToolStripMenuItem.Click += new System.EventHandler(this.altaDeChequerasToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -164,20 +181,12 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
-            // chequesPropiosToolStripMenuItem
+            // emisionDeChequesToolStripMenuItem
             // 
-            this.chequesPropiosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.altaDeChequerasToolStripMenuItem});
-            this.chequesPropiosToolStripMenuItem.Name = "chequesPropiosToolStripMenuItem";
-            this.chequesPropiosToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.chequesPropiosToolStripMenuItem.Text = "Cheques Propios";
-            // 
-            // altaDeChequerasToolStripMenuItem
-            // 
-            this.altaDeChequerasToolStripMenuItem.Name = "altaDeChequerasToolStripMenuItem";
-            this.altaDeChequerasToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.altaDeChequerasToolStripMenuItem.Text = "Alta de Chequeras";
-            this.altaDeChequerasToolStripMenuItem.Click += new System.EventHandler(this.altaDeChequerasToolStripMenuItem_Click);
+            this.emisionDeChequesToolStripMenuItem.Name = "emisionDeChequesToolStripMenuItem";
+            this.emisionDeChequesToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
+            this.emisionDeChequesToolStripMenuItem.Text = "Emision de Cheques";
+            this.emisionDeChequesToolStripMenuItem.Click += new System.EventHandler(this.emisionDeChequesToolStripMenuItem_Click);
             // 
             // inicio
             // 
@@ -215,5 +224,6 @@
         private System.Windows.Forms.ToolStripMenuItem altaDeCuentasPropiasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem chequesPropiosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem altaDeChequerasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem emisionDeChequesToolStripMenuItem;
     }
 }

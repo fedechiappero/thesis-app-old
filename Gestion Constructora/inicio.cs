@@ -61,5 +61,11 @@ namespace Gestion_Constructora
             chequera chequera = new chequera();
             chequera.ShowDialog();
         }
+
+        private void emisionDeChequesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chequeEmision chequeEmision = new chequeEmision();
+            chequeEmision.ShowDialog();
+        }
     }
 }
