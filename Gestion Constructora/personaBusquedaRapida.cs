@@ -47,12 +47,12 @@ namespace Gestion_Constructora
                         dgv_persona.Rows.Add(reader[0], reader[1]);
                     }
                 }
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void dgv_persona_SelectionChanged(object sender, EventArgs e)

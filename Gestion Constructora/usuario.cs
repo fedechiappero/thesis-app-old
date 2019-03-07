@@ -165,12 +165,12 @@ namespace Gestion_Constructora
                         dgv_usuario.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
                     }
                 }
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void insertar(string nombre, string celular, string email, string usuario, string password, int nivel)
@@ -203,12 +203,12 @@ namespace Gestion_Constructora
                 prmId.Value = idPersona;
                 cmdEmpleado.Parameters.Add(prmId);
                 cmdEmpleado.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void actualizar(int id, string nombre, string celular, string email, string usuario, string password, int nivel)
@@ -244,12 +244,12 @@ namespace Gestion_Constructora
                 procedures.conexion.Open();
                 cmdPersona.ExecuteNonQuery();
                 cmdEmpleado.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void eliminar(int id)
@@ -261,13 +261,13 @@ namespace Gestion_Constructora
             try
             {
                 procedures.conexion.Open();
-                mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
+                mycmd.ExecuteNonQuery(); 
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)

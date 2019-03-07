@@ -150,12 +150,12 @@ namespace Gestion_Constructora
                         dgv_sitio.Rows.Add(reader[0], reader[1]);
                     }
                 }
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
             
 
@@ -169,12 +169,12 @@ namespace Gestion_Constructora
             {
                 procedures.conexion.Open();
                 mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void actualizar(int id, string descripcion)
@@ -190,12 +190,12 @@ namespace Gestion_Constructora
             {
                 procedures.conexion.Open();
                 mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void eliminar(int id)
@@ -208,12 +208,12 @@ namespace Gestion_Constructora
             {
                 procedures.conexion.Open();
                 mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)

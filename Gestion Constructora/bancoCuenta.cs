@@ -175,12 +175,12 @@ namespace Gestion_Constructora
                         dgv_banco.Rows.Add(reader[0], reader[1]);
                     }
                 }
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void buscarCuenta(int idBanco)
@@ -203,12 +203,12 @@ namespace Gestion_Constructora
                         dgv_cuenta.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
                 }
-                procedures.conexion2.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion2.Close();
         }
 
         private void insertar(int idBanco, string tipo, string numero, string cbu, bool activa)
@@ -232,13 +232,13 @@ namespace Gestion_Constructora
             try
             {
                 procedures.conexion.Open();
-                mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
+                mycmd.ExecuteNonQuery();  
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void actualizar(int id, int idBanco, string tipo, string numero, string cbu, bool activa)
@@ -266,12 +266,12 @@ namespace Gestion_Constructora
             {
                 procedures.conexion.Open();
                 mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void eliminar(int id)
@@ -284,12 +284,12 @@ namespace Gestion_Constructora
             {
                 procedures.conexion.Open();
                 mycmd.ExecuteNonQuery();
-                procedures.conexion.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            procedures.conexion.Close();
         }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
