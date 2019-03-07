@@ -92,5 +92,17 @@ namespace Gestion_Constructora
                 }
             }
         }
+
+        private void autoLogin()
+        {
+            this.txt_usuario.Text = "admin";
+            this.txt_contraseña.Text = "admin";
+            this.btn_login.PerformClick();
+        }
+
+        private void login_Load(object sender, EventArgs e)
+        {
+            this.autoLogin();
+        }
     }
 }
