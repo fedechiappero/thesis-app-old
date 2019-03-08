@@ -39,6 +39,7 @@
             this.chequesPropiosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.altaDeChequerasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emisionDeChequesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -46,7 +47,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aBMDeCuentasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeRubrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,8 @@
             // 
             this.obrasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aBMSitioToolStripMenuItem,
-            this.aBMDeTareaToolStripMenuItem});
+            this.aBMDeTareaToolStripMenuItem,
+            this.aBMDeRubrosToolStripMenuItem});
             this.obrasToolStripMenuItem.Name = "obrasToolStripMenuItem";
             this.obrasToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.obrasToolStripMenuItem.Text = "Obras";
@@ -74,14 +76,14 @@
             // aBMSitioToolStripMenuItem
             // 
             this.aBMSitioToolStripMenuItem.Name = "aBMSitioToolStripMenuItem";
-            this.aBMSitioToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.aBMSitioToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.aBMSitioToolStripMenuItem.Text = "ABM de Sitio";
             this.aBMSitioToolStripMenuItem.Click += new System.EventHandler(this.aBMSitioToolStripMenuItem_Click);
             // 
             // aBMDeTareaToolStripMenuItem
             // 
             this.aBMDeTareaToolStripMenuItem.Name = "aBMDeTareaToolStripMenuItem";
-            this.aBMDeTareaToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
+            this.aBMDeTareaToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.aBMDeTareaToolStripMenuItem.Text = "ABM de Tarea";
             this.aBMDeTareaToolStripMenuItem.Click += new System.EventHandler(this.aBMDeTareaToolStripMenuItem_Click);
             // 
@@ -141,6 +143,13 @@
             this.emisionDeChequesToolStripMenuItem.Text = "Emision de Cheques";
             this.emisionDeChequesToolStripMenuItem.Click += new System.EventHandler(this.emisionDeChequesToolStripMenuItem_Click);
             // 
+            // aBMDeCuentasToolStripMenuItem
+            // 
+            this.aBMDeCuentasToolStripMenuItem.Name = "aBMDeCuentasToolStripMenuItem";
+            this.aBMDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.aBMDeCuentasToolStripMenuItem.Text = "ABM de Cuentas";
+            this.aBMDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCuentasToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -190,12 +199,12 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
-            // aBMDeCuentasToolStripMenuItem
+            // aBMDeRubrosToolStripMenuItem
             // 
-            this.aBMDeCuentasToolStripMenuItem.Name = "aBMDeCuentasToolStripMenuItem";
-            this.aBMDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
-            this.aBMDeCuentasToolStripMenuItem.Text = "ABM de Cuentas";
-            this.aBMDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCuentasToolStripMenuItem_Click);
+            this.aBMDeRubrosToolStripMenuItem.Name = "aBMDeRubrosToolStripMenuItem";
+            this.aBMDeRubrosToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.aBMDeRubrosToolStripMenuItem.Text = "ABM de Rubros";
+            this.aBMDeRubrosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeRubrosToolStripMenuItem_Click);
             // 
             // inicio
             // 
@@ -235,5 +244,6 @@
         private System.Windows.Forms.ToolStripMenuItem altaDeChequerasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem emisionDeChequesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBMDeCuentasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMDeRubrosToolStripMenuItem;
     }
 }

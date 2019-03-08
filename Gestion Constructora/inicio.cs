@@ -73,5 +73,11 @@ namespace Gestion_Constructora
             cuenta cuenta = new cuenta();
             cuenta.ShowDialog();
         }
+
+        private void aBMDeRubrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rubro rubro = new rubro();
+            rubro.ShowDialog();
+        }
     }
 }

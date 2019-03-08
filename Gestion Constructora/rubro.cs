@@ -11,22 +11,22 @@ using MySql.Data.MySqlClient;
 
 namespace Gestion_Constructora
 {
-    public partial class cuenta : Form
+    public partial class rubro : Form
     {
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
         private int controllsStatus = 0;
 
-        public cuenta()
+        public rubro()
         {
             InitializeComponent();
-            cuenta cuenta = this;
+            rubro rubro = this;
             procedures proc = new procedures();
             //                 form         title           start position            resizable
-            proc.initilizeForm(cuenta, "ABM de Cuentas", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_cuenta);
+            proc.initilizeForm(rubro, "ABM de Rubros", FormStartPosition.CenterScreen, false);
+            proc.initializeGrid(this.dgv_rubro);
         }
 
-        private void cuenta_Load(object sender, EventArgs e)
+        private void rubro_Load(object sender, EventArgs e)
         {
             buscar();
         }
@@ -38,9 +38,9 @@ namespace Gestion_Constructora
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (this.dgv_cuenta.SelectedRows.Count > 0)
+            if (this.dgv_rubro.SelectedRows.Count > 0)
             {
-                this.txt_cuenta.Text = Convert.ToString(this.dgv_cuenta.CurrentRow.Cells[1].Value);
+                this.txt_rubro.Text = Convert.ToString(this.dgv_rubro.CurrentRow.Cells[1].Value);
                 changeControlls(2);
             }
             else
@@ -51,7 +51,7 @@ namespace Gestion_Constructora
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (this.dgv_cuenta.SelectedRows.Count > 0)
+            if (this.dgv_rubro.SelectedRows.Count > 0)
             {
                 changeControlls(3);
             }
@@ -75,15 +75,15 @@ namespace Gestion_Constructora
                     break;
                 case 1://nuevo
                     this.pnl_datos.Enabled = true;
-                    this.txt_cuenta.Text = String.Empty;
-                    this.txt_cuenta.Focus();
+                    this.txt_rubro.Text = String.Empty;
+                    this.txt_rubro.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
                 case 2://editar
                     this.pnl_datos.Enabled = true;
-                    this.txt_cuenta.Focus();
+                    this.txt_rubro.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
@@ -101,9 +101,9 @@ namespace Gestion_Constructora
             controllsStatus = status;
         }
 
-        private void dgv_cuenta_SelectionChanged(object sender, EventArgs e)
+        private void dgv_rubro_SelectionChanged(object sender, EventArgs e)
         {
-            this.txt_cuenta.Text = Convert.ToString(this.dgv_cuenta.CurrentRow.Cells[1].Value);
+            this.txt_rubro.Text = Convert.ToString(this.dgv_rubro.CurrentRow.Cells[1].Value);
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -111,13 +111,13 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(this.txt_cuenta.Text.Trim());
+                    insertar(this.txt_rubro.Text.Trim());
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), this.txt_cuenta.Text);
+                    actualizar(Convert.ToInt32(this.dgv_rubro.CurrentRow.Cells[0].Value), this.txt_rubro.Text);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value));
+                    eliminar(Convert.ToInt32(this.dgv_rubro.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
@@ -140,10 +140,10 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            this.dgv_cuenta.Rows.Clear();
+            this.dgv_rubro.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
-            MySqlCommand consulta = new MySqlCommand("SELECT * FROM cuenta WHERE nombre LIKE @nombre AND activo = 1", procedures.conexion);
+            MySqlCommand consulta = new MySqlCommand("SELECT * FROM rubro WHERE nombre LIKE @nombre AND activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try
             {
@@ -154,7 +154,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        this.dgv_cuenta.Rows.Add(reader[0], reader[1]);
+                        this.dgv_rubro.Rows.Add(reader[0], reader[1]);
                     }
                 }
             }
@@ -165,12 +165,11 @@ namespace Gestion_Constructora
             procedures.conexion.Close();
         }
 
-
         private void insertar(string nombre)
         {
             MySqlParameter prmNombre = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             prmNombre.Value = Convert.ToString(nombre);
-            MySqlCommand mycmd = new MySqlCommand("INSERT INTO cuenta (nombre) VALUES (@nombre)", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("INSERT INTO rubro (nombre) VALUES (@nombre)", procedures.conexion);
             mycmd.Parameters.Add(prmNombre);
             try
             {
@@ -190,7 +189,7 @@ namespace Gestion_Constructora
             MySqlParameter prmNombre = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             prmId.Value = Convert.ToInt32(id);
             prmNombre.Value = Convert.ToString(nombre);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE cuenta SET nombre = @nombre WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE rubro SET nombre = @nombre WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             mycmd.Parameters.Add(prmNombre);
             try
@@ -209,7 +208,7 @@ namespace Gestion_Constructora
         {
             MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
             prmId.Value = Convert.ToInt32(id);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE cuenta SET activo = 0 WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE rubro SET activo = 0 WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             try
             {
