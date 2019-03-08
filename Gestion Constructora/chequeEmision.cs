@@ -38,20 +38,20 @@ namespace Gestion_Constructora
 
         private void chequeEmision_Load(object sender, EventArgs e)
         {
-            buscarChequera();
+            this.buscarChequera();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
             if (dgv_cheque.SelectedRows.Count > 0)
             {
-                cargarControles(this.dgv_cheque, this.dgv_chequera);
-                changeControlls(2);
+                this.cargarControles(this.dgv_cheque, this.dgv_chequera);
+                this.changeControlls(2);
             }
             else
             {
@@ -61,7 +61,14 @@ namespace Gestion_Constructora
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_cheque.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un cheque para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void changeControlls(int status)
@@ -69,7 +76,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscarChequera();
+                    this.buscarChequera();
                     this.pnl_datos.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -107,8 +114,8 @@ namespace Gestion_Constructora
 
         private void dgv_chequera_SelectionChanged(object sender, EventArgs e)
         {
-            buscarCheque(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value));
-            cargarControles(this.dgv_cheque, this.dgv_chequera);
+            this.buscarCheque(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value));
+            this.cargarControles(this.dgv_cheque, this.dgv_chequera);
         }
 
         private void cargarControles(DataGridView cheque, DataGridView chequera)
@@ -141,26 +148,26 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
+                    this.insertar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
+                    this.actualizar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            this.changeControlls(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -312,7 +319,7 @@ namespace Gestion_Constructora
 
         private void txt_busquedaChequera_TextChanged(object sender, EventArgs e)
         {
-            buscarChequera(this.txt_busquedaChequera.Text.Trim());
+            this.buscarChequera(this.txt_busquedaChequera.Text.Trim());
         }
 
         private void chequeEmision_Activated(object sender, EventArgs e)

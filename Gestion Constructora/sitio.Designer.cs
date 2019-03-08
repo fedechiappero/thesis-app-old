@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.dgv_sitio = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sitioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txt_sitio = new System.Windows.Forms.TextBox();
             this.pnl_sitio = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,7 +43,6 @@
             this.btn_aceptar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sitio)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sitioBindingSource)).BeginInit();
             this.pnl_sitio.SuspendLayout();
             this.pnl_busqueda.SuspendLayout();
             this.SuspendLayout();
@@ -193,7 +190,6 @@
             this.Text = "sitio";
             this.Load += new System.EventHandler(this.sitio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sitio)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sitioBindingSource)).EndInit();
             this.pnl_sitio.ResumeLayout(false);
             this.pnl_sitio.PerformLayout();
             this.pnl_busqueda.ResumeLayout(false);
@@ -205,7 +201,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_sitio;
-        private System.Windows.Forms.BindingSource sitioBindingSource;
         private System.Windows.Forms.TextBox txt_sitio;
         private System.Windows.Forms.Panel pnl_sitio;
         private System.Windows.Forms.Label label1;

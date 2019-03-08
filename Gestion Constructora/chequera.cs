@@ -29,20 +29,20 @@ namespace Gestion_Constructora
 
         private void chequera_Load(object sender, EventArgs e)
         {
-            buscarCuenta();
+            this.buscarCuenta();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
             if (dgv_chequera.SelectedRows.Count > 0)
             {
-                cargarControles(dgv_cuenta, dgv_chequera);
-                changeControlls(2);
+                this.cargarControles(dgv_cuenta, dgv_chequera);
+                this.changeControlls(2);
             }
             else
             {
@@ -52,7 +52,15 @@ namespace Gestion_Constructora
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_chequera.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un cheque para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
+
         }
 
         private void changeControlls(int status)
@@ -60,7 +68,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscarCuenta();
+                    this.buscarCuenta();
                     this.pnl_datos.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -99,8 +107,8 @@ namespace Gestion_Constructora
 
         private void dgv_cuenta_SelectionChanged(object sender, EventArgs e)
         {
-            buscarChequera(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value));
-            cargarControles(this.dgv_cuenta, this.dgv_chequera);
+            this.buscarChequera(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value));
+            this.cargarControles(this.dgv_cuenta, this.dgv_chequera);
         }
 
         private void cargarControles(DataGridView cuenta, DataGridView chequera)
@@ -125,30 +133,30 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            string fecha = Convert.ToString(this.dtp_fecha.Value.Year) + "-" + Convert.ToString(this.dtp_fecha.Value.Month) + "-" + Convert.ToString(this.dtp_fecha.Value.Day);
+            string fecha = procedures.dateToMySQL(this.dtp_fecha);
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), this.txt_numeroInicial.Text, Convert.ToInt16(this.txt_cantidad.Text), fecha, this.chk_activa.Checked);
+                    this.insertar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), this.txt_numeroInicial.Text, Convert.ToInt16(this.txt_cantidad.Text), fecha, this.chk_activa.Checked);
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), this.txt_numeroInicial.Text, Convert.ToInt16(this.txt_cantidad.Text), fecha, this.chk_activa.Checked);
+                    this.actualizar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), this.txt_numeroInicial.Text, Convert.ToInt16(this.txt_cantidad.Text), fecha, this.chk_activa.Checked);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            this.changeControlls(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -158,7 +166,7 @@ namespace Gestion_Constructora
 
         private void buscarCuenta(string busqueda = null)
         {
-            dgv_cuenta.Rows.Clear();
+            this.dgv_cuenta.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT bancocuenta.id, banco.nombre, bancocuenta.numero FROM banco INNER JOIN bancocuenta ON (banco.id = bancocuenta.idBanco) WHERE banco.nombre LIKE @nombre", procedures.conexion);
@@ -172,7 +180,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_cuenta.Rows.Add(reader[0], reader[1], reader[2]);
+                        this.dgv_cuenta.Rows.Add(reader[0], reader[1], reader[2]);
                     }
                 }
             }
@@ -185,7 +193,7 @@ namespace Gestion_Constructora
 
         private void buscarChequera(int idCuenta)
         {
-            dgv_chequera.Rows.Clear();
+            this.dgv_chequera.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@id", MySqlDbType.VarChar);
             prmBusqueda.Value = Convert.ToInt32(idCuenta);
@@ -200,7 +208,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_chequera.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
+                        this.dgv_chequera.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
                 }
             }
@@ -294,12 +302,12 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscarCuenta(this.txt_busqueda.Text.Trim());
+            this.buscarCuenta(this.txt_busqueda.Text.Trim());
         }
 
         private void dgv_chequera_SelectionChanged(object sender, EventArgs e)
         {
-            cargarControles(this.dgv_cuenta, this.dgv_chequera);
+            this.cargarControles(this.dgv_cuenta, this.dgv_chequera);
         }
     }
 }

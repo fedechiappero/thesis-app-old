@@ -29,30 +29,37 @@ namespace Gestion_Constructora
 
         private void tarea_Load(object sender, EventArgs e)
         {
-            buscar();
+            this.buscar();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (dgv_tarea.SelectedRows.Count > 0)
+            if (this.dgv_tarea.SelectedRows.Count > 0)
             {
                 this.txt_tarea.Text = Convert.ToString(dgv_tarea.CurrentRow.Cells[1].Value);
-                changeControlls(2);
+                this.changeControlls(2);
             }
             else
             {
-                /*inform to the dumb user that he must select a record to edit*/
+                MessageBox.Show("Debe seleccionar una tarea para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_tarea.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un tarea para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void changeControlls(int status)
@@ -60,7 +67,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscar();
+                    this.buscar();
                     this.pnl_tarea.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -105,13 +112,13 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(this.txt_tarea.Text.Trim());
+                    this.insertar(this.txt_tarea.Text.Trim());
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value), this.txt_tarea.Text);
+                    this.actualizar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value), this.txt_tarea.Text);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_tarea.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
@@ -124,7 +131,7 @@ namespace Gestion_Constructora
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -134,7 +141,7 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            dgv_tarea.Rows.Clear();
+            this.dgv_tarea.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT * FROM tarea WHERE tarea.descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
@@ -148,7 +155,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_tarea.Rows.Add(reader[0], reader[1]);
+                        this.dgv_tarea.Rows.Add(reader[0], reader[1]);
                     }
                 }
             }
@@ -218,7 +225,7 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscar(this.txt_busqueda.Text.Trim());
+            this.buscar(this.txt_busqueda.Text.Trim());
         }
     }
 }

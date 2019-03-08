@@ -25,12 +25,12 @@ namespace Gestion_Constructora
 
         private void personaBusquedaRapida_Load(object sender, EventArgs e)
         {
-            buscar();
+            this.buscar();
         }
 
         private void buscar(string busqueda = null)
         {
-            dgv_persona.Rows.Clear();
+            this.dgv_persona.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT id, nombre FROM persona WHERE nombre LIKE @nombre", procedures.conexion);
@@ -44,7 +44,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_persona.Rows.Add(reader[0], reader[1]);
+                        this.dgv_persona.Rows.Add(reader[0], reader[1]);
                     }
                 }
             }
@@ -62,7 +62,7 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscar(this.txt_busqueda.Text.Trim());
+            this.buscar(this.txt_busqueda.Text.Trim());
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)

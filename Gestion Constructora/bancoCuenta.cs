@@ -29,20 +29,20 @@ namespace Gestion_Constructora
 
         private void bancoCuenta_Load(object sender, EventArgs e)
         {
-            buscarBanco();
+            this.buscarBanco();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (dgv_cuenta.SelectedRows.Count > 0)
+            if (this.dgv_cuenta.SelectedRows.Count > 0)
             {
-                cargarControles(dgv_banco, dgv_cuenta);
-                changeControlls(2);
+                this.cargarControles(dgv_banco, dgv_cuenta);
+                this.changeControlls(2);
             }
             else
             {
@@ -52,7 +52,14 @@ namespace Gestion_Constructora
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_cuenta.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar una cuenta para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void changeControlls(int status)
@@ -60,7 +67,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscarBanco();
+                    this.buscarBanco();
                     this.pnl_datos.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -100,8 +107,8 @@ namespace Gestion_Constructora
         private void dgv_banco_SelectionChanged(object sender, EventArgs e)
         {
             //this.txt_banco.Text = Convert.ToString(this.dgv_banco.CurrentRow.Cells[1].Value);
-            buscarCuenta(Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value));
-            cargarControles(this.dgv_banco, this.dgv_cuenta);
+            this.buscarCuenta(Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value));
+            this.cargarControles(this.dgv_banco, this.dgv_cuenta);
         }
 
         private void cargarControles(DataGridView banco, DataGridView cuenta)
@@ -129,26 +136,26 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value), Convert.ToString(this.cbo_tipo.SelectedItem), this.txt_numero.Text, this.txt_cbu.Text, this.chk_activa.Checked);
+                    this.insertar(Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value), Convert.ToString(this.cbo_tipo.SelectedItem), this.txt_numero.Text, this.txt_cbu.Text, this.chk_activa.Checked);
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value), Convert.ToString(this.cbo_tipo.SelectedItem), this.txt_numero.Text, this.txt_cbu.Text, this.chk_activa.Checked);
+                    this.actualizar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value), Convert.ToString(this.cbo_tipo.SelectedItem), this.txt_numero.Text, this.txt_cbu.Text, this.chk_activa.Checked);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_cuenta.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            this.changeControlls(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -158,7 +165,7 @@ namespace Gestion_Constructora
 
         private void buscarBanco(string busqueda = null)
         {
-            dgv_banco.Rows.Clear();
+            this.dgv_banco.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT * FROM banco WHERE nombre LIKE @nombre AND activo = 1", procedures.conexion);
@@ -172,7 +179,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_banco.Rows.Add(reader[0], reader[1]);
+                        this.dgv_banco.Rows.Add(reader[0], reader[1]);
                     }
                 }
             }
@@ -185,7 +192,7 @@ namespace Gestion_Constructora
 
         private void buscarCuenta(int idBanco)
         {
-            dgv_cuenta.Rows.Clear();
+            this.dgv_cuenta.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@id", MySqlDbType.VarChar);
             prmBusqueda.Value = Convert.ToInt32(idBanco);
@@ -200,7 +207,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_cuenta.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
+                        this.dgv_cuenta.Rows.Add(reader[0], reader[1], reader[2], reader[3], reader[4], reader[5]);
                     }
                 }
             }
@@ -294,12 +301,12 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscarBanco(this.txt_busqueda.Text.Trim());
+            this.buscarBanco(this.txt_busqueda.Text.Trim());
         }
 
         private void dgv_cuenta_SelectionChanged(object sender, EventArgs e)
         {
-            cargarControles(this.dgv_banco, this.dgv_cuenta);
+            this.cargarControles(this.dgv_banco, this.dgv_cuenta);
         }
     }
 }

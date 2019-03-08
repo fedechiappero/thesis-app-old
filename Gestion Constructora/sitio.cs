@@ -28,12 +28,12 @@ namespace Gestion_Constructora
 
         private void sitio_Load(object sender, EventArgs e)
         {
-            buscar();
+            this.buscar();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -41,17 +41,24 @@ namespace Gestion_Constructora
             if (this.dgv_sitio.SelectedRows.Count > 0)
             {
                 this.txt_sitio.Text = Convert.ToString(this.dgv_sitio.CurrentRow.Cells[1].Value);
-                changeControlls(2);
+                this.changeControlls(2);
             }
             else
             {
-                /*inform to the user that he must select a record to edit*/
+                MessageBox.Show("Debe seleccionar un sitio para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_sitio.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un sitio para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void changeControlls(int status)
@@ -59,7 +66,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscar();
+                    this.buscar();
                     this.pnl_sitio.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -104,26 +111,26 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(this.txt_sitio.Text.Trim());
+                    this.insertar(this.txt_sitio.Text.Trim());
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value), this.txt_sitio.Text);
+                    this.actualizar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value), this.txt_sitio.Text);
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_sitio.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            this.changeControlls(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -218,7 +225,7 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscar(this.txt_busqueda.Text.Trim());
+            this.buscar(this.txt_busqueda.Text.Trim());
         }
     }
 }

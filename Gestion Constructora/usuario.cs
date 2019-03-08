@@ -28,30 +28,37 @@ namespace Gestion_Constructora
 
         private void usuario_Load(object sender, EventArgs e)
         {
-            buscar();
+            this.buscar();
         }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            changeControlls(1);
+            this.changeControlls(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (dgv_usuario.SelectedRows.Count > 0)
+            if (this.dgv_usuario.SelectedRows.Count > 0)
             {
-                cargarControles(dgv_usuario);
-                changeControlls(2);
+                this.cargarControles(dgv_usuario);
+                this.changeControlls(2);
             }
             else
             {
-                /*inform to the dumb user that he must select a record to edit*/
+                MessageBox.Show("Debe seleccionar un usuario para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            changeControlls(3);
+            if (this.dgv_usuario.SelectedRows.Count > 0)
+            {
+                this.changeControlls(3);
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un usuario para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
         }
 
         private void changeControlls(int status)
@@ -59,7 +66,7 @@ namespace Gestion_Constructora
             switch (status)
             {
                 case 0://inicio
-                    buscar();
+                    this.buscar();
                     this.pnl_datos.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Black;
                     this.btn_nuevo.Enabled = true;
@@ -111,7 +118,7 @@ namespace Gestion_Constructora
 
         private void dgv_usuario_SelectionChanged(object sender, EventArgs e)
         {
-            cargarControles(dgv_usuario);
+            this.cargarControles(dgv_usuario);
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -119,26 +126,26 @@ namespace Gestion_Constructora
             switch (controllsStatus)
             {
                 case 1:
-                    insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                    this.insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 2:
-                    actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                    this.actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 3:
-                    eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            this.changeControlls(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             if (controllsStatus != 0)
             {
-                changeControlls(0);
+                this.changeControlls(0);
             }
             else
             {
@@ -148,7 +155,7 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            dgv_usuario.Rows.Clear();
+            this.dgv_usuario.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT persona.id, persona.nombre, persona.celular, persona.email, usuario.usuario, usuario.password, usuario.nivel_acceso FROM persona INNER JOIN usuario ON (persona.id = usuario.id) WHERE persona.nombre LIKE @nombre AND usuario.activo = 1", procedures.conexion);
@@ -162,7 +169,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        dgv_usuario.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
+                        this.dgv_usuario.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
                     }
                 }
             }
@@ -272,7 +279,7 @@ namespace Gestion_Constructora
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
         {
-            buscar(this.txt_busqueda.Text.Trim());
+            this.buscar(this.txt_busqueda.Text.Trim());
         }
     }
 }

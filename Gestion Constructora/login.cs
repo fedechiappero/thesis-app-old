@@ -26,7 +26,7 @@ namespace Gestion_Constructora
         {
             string usuario = this.txt_usuario.Text.Trim();
             int nivel = 0;
-            bool res = buscarCredenciales(usuario, this.txt_contraseña.Text.Trim(), ref nivel);
+            bool res = this.buscarCredenciales(usuario, this.txt_contraseña.Text.Trim(), ref nivel);
             if (res)
             {
                 this.Visible = false;
@@ -88,7 +88,7 @@ namespace Gestion_Constructora
             {
                 if (e.KeyChar == (char)13)
                 {
-                    btn_login.PerformClick();
+                    this.btn_login.PerformClick();
                 }
             }
         }
