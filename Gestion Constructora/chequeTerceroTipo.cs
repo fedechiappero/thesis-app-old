@@ -11,22 +11,22 @@ using MySql.Data.MySqlClient;
 
 namespace Gestion_Constructora
 {
-    public partial class chequeTerceroDestino : Form
+    public partial class chequeTerceroTipo : Form
     {
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
         private int estadoControles = 0;
 
-        public chequeTerceroDestino()
+        public chequeTerceroTipo()
         {
             InitializeComponent();
-            chequeTerceroDestino chequeTerceroDestino = this;
+            chequeTerceroTipo chequeTerceroTipo = this;
             procedures proc = new procedures();
-            //                               form                 title           start position            resizable
-            proc.inicializarFormulario(chequeTerceroDestino, "ABM de Destinos para Cheques", FormStartPosition.CenterScreen, false);
-            proc.inicializarGrid(this.dgv_destino);
+            //                               form                 title                 start position            resizable
+            proc.inicializarFormulario(chequeTerceroTipo, "ABM de Tipos de Cheques", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_tipo);
         }
 
-        private void chequeTerceroDestino_Load(object sender, EventArgs e)
+        private void chequeTerceroTipo_Load(object sender, EventArgs e)
         {
             this.buscar();
         }
@@ -38,26 +38,26 @@ namespace Gestion_Constructora
 
         private void btn_editar_Click(object sender, EventArgs e)
         {
-            if (this.dgv_destino.SelectedRows.Count > 0)
+            if (this.dgv_tipo.SelectedRows.Count > 0)
             {
-                this.txt_destino.Text = Convert.ToString(this.dgv_destino.CurrentRow.Cells[1].Value);
+                this.txt_tipo.Text = Convert.ToString(this.dgv_tipo.CurrentRow.Cells[1].Value);
                 this.cambiarControles(2);
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un destino para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
+                MessageBox.Show("Debe seleccionar un tipo para editar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (this.dgv_destino.SelectedRows.Count > 0)
+            if (this.dgv_tipo.SelectedRows.Count > 0)
             {
                 this.cambiarControles(3);
             }
             else
             {
-                MessageBox.Show("Debe seleccionar un destino para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Debe seleccionar un tipo para eliminar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } 
         }
 
@@ -75,15 +75,15 @@ namespace Gestion_Constructora
                     break;
                 case 1://nuevo
                     this.pnl_datos.Enabled = true;
-                    this.txt_destino.Text = String.Empty;
-                    this.txt_destino.Focus();
+                    this.txt_tipo.Text = String.Empty;
+                    this.txt_tipo.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
                 case 2://editar
                     this.pnl_datos.Enabled = true;
-                    this.txt_destino.Focus();
+                    this.txt_tipo.Focus();
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
@@ -101,9 +101,9 @@ namespace Gestion_Constructora
             estadoControles = estado;
         }
 
-        private void dgv_destino_SelectionChanged(object sender, EventArgs e)
+        private void dgv_tipo_SelectionChanged(object sender, EventArgs e)
         {
-            this.txt_destino.Text = Convert.ToString(this.dgv_destino.CurrentRow.Cells[1].Value);
+            this.txt_tipo.Text = Convert.ToString(this.dgv_tipo.CurrentRow.Cells[1].Value);
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
@@ -111,13 +111,13 @@ namespace Gestion_Constructora
             switch (estadoControles)
             {
                 case 1:
-                    this.insertar(this.txt_destino.Text.Trim());
+                    this.insertar(this.txt_tipo.Text.Trim());
                     break;
                 case 2:
-                    this.actualizar(Convert.ToInt32(this.dgv_destino.CurrentRow.Cells[0].Value), this.txt_destino.Text);
+                    this.actualizar(Convert.ToInt32(this.dgv_tipo.CurrentRow.Cells[0].Value), this.txt_tipo.Text);
                     break;
                 case 3:
-                    this.eliminar(Convert.ToInt32(this.dgv_destino.CurrentRow.Cells[0].Value));
+                    this.eliminar(Convert.ToInt32(this.dgv_tipo.CurrentRow.Cells[0].Value));
                     break;
                 default:
                     //something went wrong
@@ -140,10 +140,10 @@ namespace Gestion_Constructora
 
         private void buscar(string busqueda = null)
         {
-            this.dgv_destino.Rows.Clear();
+            this.dgv_tipo.Rows.Clear();
 
             MySqlParameter prmBusqueda = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
-            MySqlCommand consulta = new MySqlCommand("SELECT * FROM chequetercerodestino WHERE descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
+            MySqlCommand consulta = new MySqlCommand("SELECT * FROM chequetercerotipo WHERE descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@descripcion", "%" + Convert.ToString(busqueda) + "%");
             try
             {
@@ -154,7 +154,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        this.dgv_destino.Rows.Add(reader[0], reader[1]);
+                        this.dgv_tipo.Rows.Add(reader[0], reader[1]);
                     }
                 }
             }
@@ -169,7 +169,7 @@ namespace Gestion_Constructora
         {
             MySqlParameter prmDescripcion = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             prmDescripcion.Value = Convert.ToString(descripcion);
-            MySqlCommand mycmd = new MySqlCommand("INSERT INTO chequetercerodestino (descripcion) VALUES (@descripcion)", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("INSERT INTO chequetercerotipo (descripcion) VALUES (@descripcion)", procedures.conexion);
             mycmd.Parameters.Add(prmDescripcion);
             try
             {
@@ -189,7 +189,7 @@ namespace Gestion_Constructora
             MySqlParameter prmDescripcion = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             prmId.Value = Convert.ToInt32(id);
             prmDescripcion.Value = Convert.ToString(descripcion);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE chequetercerodestino SET descripcion = @descripcion WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE chequetercerotipo SET descripcion = @descripcion WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             mycmd.Parameters.Add(prmDescripcion);
             try
@@ -208,7 +208,7 @@ namespace Gestion_Constructora
         {
             MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
             prmId.Value = Convert.ToInt32(id);
-            MySqlCommand mycmd = new MySqlCommand("UPDATE chequetercerodestino SET activo = 0 WHERE id = @id", procedures.conexion);
+            MySqlCommand mycmd = new MySqlCommand("UPDATE chequetercerotipo SET activo = 0 WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             try
             {

@@ -85,5 +85,11 @@ namespace Gestion_Constructora
             chequeTerceroDestino chequeTerceroDestino = new chequeTerceroDestino();
             chequeTerceroDestino.ShowDialog();
         }
+
+        private void aBMDeTiposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chequeTerceroTipo chequeTerceroTipo = new chequeTerceroTipo();
+            chequeTerceroTipo.ShowDialog();
+        }
     }
 }
