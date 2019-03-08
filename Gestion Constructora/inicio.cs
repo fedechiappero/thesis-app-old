@@ -79,5 +79,11 @@ namespace Gestion_Constructora
             rubro rubro = new rubro();
             rubro.ShowDialog();
         }
+
+        private void aBMDeDestinosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chequeTerceroDestino chequeTerceroDestino = new chequeTerceroDestino();
+            chequeTerceroDestino.ShowDialog();
+        }
     }
 }
