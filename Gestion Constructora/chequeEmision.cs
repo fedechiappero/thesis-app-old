@@ -17,7 +17,7 @@ namespace Gestion_Constructora
         public static string nombrePersona;
 
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
-        private int controllsStatus = 0;
+        private int estadoControles = 0;
 
         public chequeEmision()
         {
@@ -25,9 +25,9 @@ namespace Gestion_Constructora
             chequeEmision chequeEmision = this;
             procedures proc = new procedures();
             //                         form         title             start position            resizable
-            proc.initilizeForm(chequeEmision, "Emisión de Cheque", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_chequera);
-            proc.initializeGrid(this.dgv_cheque);
+            proc.inicializarFormulario(chequeEmision, "Emisión de Cheque", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_chequera);
+            proc.inicializarGrid(this.dgv_cheque);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -43,7 +43,7 @@ namespace Gestion_Constructora
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            this.changeControlls(1);
+            this.cambiarControles(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace Gestion_Constructora
             if (dgv_cheque.SelectedRows.Count > 0)
             {
                 this.cargarControles(this.dgv_cheque, this.dgv_chequera);
-                this.changeControlls(2);
+                this.cambiarControles(2);
             }
             else
             {
@@ -63,7 +63,7 @@ namespace Gestion_Constructora
         {
             if (this.dgv_cheque.SelectedRows.Count > 0)
             {
-                this.changeControlls(3);
+                this.cambiarControles(3);
             }
             else
             {
@@ -71,9 +71,9 @@ namespace Gestion_Constructora
             } 
         }
 
-        private void changeControlls(int status)
+        private void cambiarControles(int estado)
         {
-            switch (status)
+            switch (estado)
             {
                 case 0://inicio
                     this.buscarChequera();
@@ -109,7 +109,7 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            controllsStatus = status;
+            estadoControles = estado;
         }
 
         private void dgv_chequera_SelectionChanged(object sender, EventArgs e)
@@ -145,7 +145,7 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            switch (controllsStatus)
+            switch (estadoControles)
             {
                 case 1:
                     this.insertar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
@@ -160,14 +160,14 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            this.changeControlls(0);
+            this.cambiarControles(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            if (controllsStatus != 0)
+            if (estadoControles != 0)
             {
-                this.changeControlls(0);
+                this.cambiarControles(0);
             }
             else
             {

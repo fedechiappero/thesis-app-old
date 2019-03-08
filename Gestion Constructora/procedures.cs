@@ -14,22 +14,19 @@ namespace Gestion_Constructora
         public static MySqlConnection conexion = new MySqlConnection(con);
         public static MySqlConnection conexion2 = new MySqlConnection(con);
 
-        //public static string conexion = "server=localhost; user id=root; database=constructora; password=root";
-
-        public void initilizeForm(Form login, string title, FormStartPosition position, bool resizable)
+        public void inicializarFormulario(Form login, string titulo, FormStartPosition posicion, bool redimensionable)
         {
-            login.Text = title;
-            login.StartPosition = position;
-            if (!resizable)
+            login.Text = titulo;
+            login.StartPosition = posicion; 
+            if (!redimensionable)
             {
                 login.FormBorderStyle = FormBorderStyle.FixedSingle;
             }
         }
 
-        public void initializeGrid(DataGridView grid)
+        public void inicializarGrid(DataGridView grid)
         {
             grid.Rows.Clear();
-            //grid.Refresh();
             grid.AllowUserToAddRows = false;
             grid.AllowUserToDeleteRows = false;
             grid.ReadOnly = true;

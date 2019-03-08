@@ -19,8 +19,8 @@ namespace Gestion_Constructora
             personaBusquedaRapida personaBusquedaRapida = this;
             procedures proc = new procedures();
             //                         form                         title           start position            resizable
-            proc.initilizeForm(personaBusquedaRapida, "Persona Busqueda Rápida", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_persona);
+            proc.inicializarFormulario(personaBusquedaRapida, "Persona Busqueda Rápida", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_persona);
         }
 
         private void personaBusquedaRapida_Load(object sender, EventArgs e)

@@ -14,7 +14,7 @@ namespace Gestion_Constructora
     public partial class bancoCuenta : Form
     {
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
-        private int controllsStatus = 0;
+        private int estadoControles = 0;
 
         public bancoCuenta()
         {
@@ -22,9 +22,9 @@ namespace Gestion_Constructora
             bancoCuenta bancoCuenta = this;
             procedures proc = new procedures();
             //                     form               title               start position            resizable
-            proc.initilizeForm(bancoCuenta, "ABM de Cuentas de Banco", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_banco);
-            proc.initializeGrid(this.dgv_cuenta);
+            proc.inicializarFormulario(bancoCuenta, "ABM de Cuentas de Banco", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_banco);
+            proc.inicializarGrid(this.dgv_cuenta);
         }
 
         private void bancoCuenta_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace Gestion_Constructora
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            this.changeControlls(1);
+            this.cambiarControles(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace Gestion_Constructora
             if (this.dgv_cuenta.SelectedRows.Count > 0)
             {
                 this.cargarControles(dgv_banco, dgv_cuenta);
-                this.changeControlls(2);
+                this.cambiarControles(2);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Gestion_Constructora
         {
             if (this.dgv_cuenta.SelectedRows.Count > 0)
             {
-                this.changeControlls(3);
+                this.cambiarControles(3);
             }
             else
             {
@@ -62,9 +62,9 @@ namespace Gestion_Constructora
             } 
         }
 
-        private void changeControlls(int status)
+        private void cambiarControles(int estado)
         {
-            switch (status)
+            switch (estado)
             {
                 case 0://inicio
                     this.buscarBanco();
@@ -101,7 +101,7 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            controllsStatus = status;
+            estadoControles = estado;
         }
 
         private void dgv_banco_SelectionChanged(object sender, EventArgs e)
@@ -133,7 +133,7 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            switch (controllsStatus)
+            switch (estadoControles)
             {
                 case 1:
                     this.insertar(Convert.ToInt32(this.dgv_banco.CurrentRow.Cells[0].Value), Convert.ToString(this.cbo_tipo.SelectedItem), this.txt_numero.Text, this.txt_cbu.Text, this.chk_activa.Checked);
@@ -148,14 +148,14 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            this.changeControlls(0);
+            this.cambiarControles(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            if (controllsStatus != 0)
+            if (estadoControles != 0)
             {
-                this.changeControlls(0);
+                this.cambiarControles(0);
             }
             else
             {

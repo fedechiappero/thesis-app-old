@@ -14,7 +14,7 @@ namespace Gestion_Constructora
     public partial class usuario : Form
     {
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
-        private int controllsStatus = 0;
+        private int estadoControles = 0;
 
         public usuario()
         {
@@ -22,8 +22,8 @@ namespace Gestion_Constructora
             usuario usuario = this;
             procedures proc = new procedures();
             //                 form         title                start position          resizable
-            proc.initilizeForm(usuario, "ABM de Usuarios", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_usuario);
+            proc.inicializarFormulario(usuario, "ABM de Usuarios", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_usuario);
         }
 
         private void usuario_Load(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace Gestion_Constructora
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            this.changeControlls(1);
+            this.cambiarControles(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -41,7 +41,7 @@ namespace Gestion_Constructora
             if (this.dgv_usuario.SelectedRows.Count > 0)
             {
                 this.cargarControles(dgv_usuario);
-                this.changeControlls(2);
+                this.cambiarControles(2);
             }
             else
             {
@@ -53,7 +53,7 @@ namespace Gestion_Constructora
         {
             if (this.dgv_usuario.SelectedRows.Count > 0)
             {
-                this.changeControlls(3);
+                this.cambiarControles(3);
             }
             else
             {
@@ -61,9 +61,9 @@ namespace Gestion_Constructora
             } 
         }
 
-        private void changeControlls(int status)
+        private void cambiarControles(int estado)
         {
-            switch (status)
+            switch (estado)
             {
                 case 0://inicio
                     this.buscar();
@@ -103,7 +103,7 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            controllsStatus = status;
+            estadoControles = estado;
         }
 
         private void cargarControles(DataGridView dgv)
@@ -123,7 +123,7 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            switch (controllsStatus)
+            switch (estadoControles)
             {
                 case 1:
                     this.insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
@@ -138,14 +138,14 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            this.changeControlls(0);
+            this.cambiarControles(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            if (controllsStatus != 0)
+            if (estadoControles != 0)
             {
-                this.changeControlls(0);
+                this.cambiarControles(0);
             }
             else
             {

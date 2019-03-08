@@ -18,7 +18,7 @@ namespace Gestion_Constructora
             inicio inicio = this;
             procedures proc = new procedures();
             //                   form         title                                                start position               resizable
-            proc.initilizeForm(inicio, usuario + " | Nivel de acceso " + Convert.ToString(nivel), FormStartPosition.CenterScreen, false);
+            proc.inicializarFormulario(inicio, usuario + " | Nivel de acceso " + Convert.ToString(nivel), FormStartPosition.CenterScreen, false);
         }
 
         private void aBMSitioToolStripMenuItem_Click(object sender, EventArgs e)

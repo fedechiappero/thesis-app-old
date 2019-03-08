@@ -15,7 +15,7 @@ namespace Gestion_Constructora
     {
 
         //para saber en que estado se encuentran los controles del formulario (0=inicio, 1=nuevo, 2=editar, 3=eliminar)
-        private int controllsStatus = 0;
+        private int estadoControles = 0;
 
         public tarea()
         {
@@ -23,8 +23,8 @@ namespace Gestion_Constructora
             tarea tarea = this;
             procedures proc = new procedures();
             //                 form         title           start position            resizable
-            proc.initilizeForm(tarea, "ABM de Tareas", FormStartPosition.CenterScreen, false);
-            proc.initializeGrid(this.dgv_tarea);
+            proc.inicializarFormulario(tarea, "ABM de Tareas", FormStartPosition.CenterScreen, false);
+            proc.inicializarGrid(this.dgv_tarea);
         }
 
         private void tarea_Load(object sender, EventArgs e)
@@ -34,7 +34,7 @@ namespace Gestion_Constructora
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
-            this.changeControlls(1);
+            this.cambiarControles(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace Gestion_Constructora
             if (this.dgv_tarea.SelectedRows.Count > 0)
             {
                 this.txt_tarea.Text = Convert.ToString(dgv_tarea.CurrentRow.Cells[1].Value);
-                this.changeControlls(2);
+                this.cambiarControles(2);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Gestion_Constructora
         {
             if (this.dgv_tarea.SelectedRows.Count > 0)
             {
-                this.changeControlls(3);
+                this.cambiarControles(3);
             }
             else
             {
@@ -62,9 +62,9 @@ namespace Gestion_Constructora
             } 
         }
 
-        private void changeControlls(int status)
+        private void cambiarControles(int estado)
         {
-            switch (status)
+            switch (estado)
             {
                 case 0://inicio
                     this.buscar();
@@ -99,7 +99,7 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            controllsStatus = status;
+            estadoControles = estado;
         }
 
         private void dgv_tarea_SelectionChanged(object sender, EventArgs e)
@@ -109,7 +109,7 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            switch (controllsStatus)
+            switch (estadoControles)
             {
                 case 1:
                     this.insertar(this.txt_tarea.Text.Trim());
@@ -124,14 +124,14 @@ namespace Gestion_Constructora
                     //something went wrong
                     break;
             }
-            changeControlls(0);
+            cambiarControles(0);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
-            if (controllsStatus != 0)
+            if (estadoControles != 0)
             {
-                this.changeControlls(0);
+                this.cambiarControles(0);
             }
             else
             {

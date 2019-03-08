@@ -19,7 +19,7 @@ namespace Gestion_Constructora
             login login = this;
             procedures proc = new procedures();
             //                 form       title               start position          resizable
-            proc.initilizeForm(login, "Iniciar Sesion", FormStartPosition.CenterScreen, false);
+            proc.inicializarFormulario(login, "Iniciar Sesion", FormStartPosition.CenterScreen, false);
         }
 
         private void button1_Click(object sender, EventArgs e)
