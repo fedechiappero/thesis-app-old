@@ -142,7 +142,6 @@ namespace Gestion_Constructora
         {
             this.dgv_tipo.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@descripcion", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT * FROM chequetercerotipo WHERE descripcion LIKE @descripcion AND activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@descripcion", "%" + Convert.ToString(busqueda) + "%");
             try

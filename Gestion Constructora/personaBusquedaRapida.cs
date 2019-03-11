@@ -32,7 +32,6 @@ namespace Gestion_Constructora
         {
             this.dgv_persona.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT id, nombre FROM persona WHERE nombre LIKE @nombre", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try

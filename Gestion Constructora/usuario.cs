@@ -157,7 +157,6 @@ namespace Gestion_Constructora
         {
             this.dgv_usuario.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT persona.id, persona.nombre, persona.celular, persona.email, usuario.usuario, usuario.password, usuario.nivel_acceso FROM persona INNER JOIN usuario ON (persona.id = usuario.id) WHERE persona.nombre LIKE @nombre AND usuario.activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try

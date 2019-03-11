@@ -167,7 +167,6 @@ namespace Gestion_Constructora
         {
             this.dgv_banco.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT * FROM banco WHERE nombre LIKE @nombre AND activo = 1", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try

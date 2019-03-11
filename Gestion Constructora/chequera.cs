@@ -168,7 +168,6 @@ namespace Gestion_Constructora
         {
             this.dgv_cuenta.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT bancocuenta.id, banco.nombre, bancocuenta.numero FROM banco INNER JOIN bancocuenta ON (banco.id = bancocuenta.idBanco) WHERE banco.nombre LIKE @nombre", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try
