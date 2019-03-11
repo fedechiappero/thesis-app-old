@@ -35,6 +35,14 @@
             this.btn_nuevo = new System.Windows.Forms.Button();
             this.pnl_busqueda = new System.Windows.Forms.Panel();
             this.dgv_cheque = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idChequera = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.personaNOmbre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emision = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_busquedaCheque = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnl_datos = new System.Windows.Forms.Panel();
@@ -60,14 +68,6 @@
             this.fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_busquedaChequera = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idChequera = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.personaNOmbre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emision = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnl_busqueda.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cheque)).BeginInit();
             this.pnl_datos.SuspendLayout();
@@ -152,6 +152,55 @@
             this.dgv_cheque.Name = "dgv_cheque";
             this.dgv_cheque.Size = new System.Drawing.Size(367, 156);
             this.dgv_cheque.TabIndex = 5;
+            this.dgv_cheque.SelectionChanged += new System.EventHandler(this.dgv_cheque_SelectionChanged);
+            // 
+            // id
+            // 
+            this.id.HeaderText = "ID";
+            this.id.Name = "id";
+            this.id.Width = 30;
+            // 
+            // idChequera
+            // 
+            this.idChequera.HeaderText = "idChequera";
+            this.idChequera.Name = "idChequera";
+            this.idChequera.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "idPersona";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // personaNOmbre
+            // 
+            this.personaNOmbre.HeaderText = "PersonaNombre";
+            this.personaNOmbre.Name = "personaNOmbre";
+            this.personaNOmbre.Visible = false;
+            // 
+            // pago
+            // 
+            this.pago.HeaderText = "Pago";
+            this.pago.Name = "pago";
+            this.pago.Visible = false;
+            // 
+            // emision
+            // 
+            this.emision.HeaderText = "Emision";
+            this.emision.Name = "emision";
+            this.emision.Width = 147;
+            // 
+            // numero
+            // 
+            this.numero.HeaderText = "numero";
+            this.numero.Name = "numero";
+            this.numero.Visible = false;
+            // 
+            // importe
+            // 
+            this.importe.HeaderText = "Importe";
+            this.importe.Name = "importe";
+            this.importe.Width = 147;
             // 
             // txt_busquedaCheque
             // 
@@ -159,6 +208,7 @@
             this.txt_busquedaCheque.Name = "txt_busquedaCheque";
             this.txt_busquedaCheque.Size = new System.Drawing.Size(241, 20);
             this.txt_busquedaCheque.TabIndex = 4;
+            this.txt_busquedaCheque.TextChanged += new System.EventHandler(this.txt_busquedaCheque_TextChanged);
             // 
             // label2
             // 
@@ -234,6 +284,8 @@
             this.txt_importe.Name = "txt_importe";
             this.txt_importe.Size = new System.Drawing.Size(95, 20);
             this.txt_importe.TabIndex = 7;
+            this.txt_importe.Enter += new System.EventHandler(this.txt_importe_Enter);
+            this.txt_importe.Leave += new System.EventHandler(this.txt_importe_Leave);
             // 
             // label5
             // 
@@ -371,54 +423,6 @@
             this.label7.Size = new System.Drawing.Size(140, 13);
             this.label7.TabIndex = 3;
             this.label7.Text = "Buscar chequera de Banco:";
-            // 
-            // id
-            // 
-            this.id.HeaderText = "ID";
-            this.id.Name = "id";
-            this.id.Width = 30;
-            // 
-            // idChequera
-            // 
-            this.idChequera.HeaderText = "idChequera";
-            this.idChequera.Name = "idChequera";
-            this.idChequera.Visible = false;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "idPersona";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // personaNOmbre
-            // 
-            this.personaNOmbre.HeaderText = "PersonaNombre";
-            this.personaNOmbre.Name = "personaNOmbre";
-            this.personaNOmbre.Visible = false;
-            // 
-            // pago
-            // 
-            this.pago.HeaderText = "Pago";
-            this.pago.Name = "pago";
-            this.pago.Visible = false;
-            // 
-            // emision
-            // 
-            this.emision.HeaderText = "Emision";
-            this.emision.Name = "emision";
-            this.emision.Width = 147;
-            // 
-            // numero
-            // 
-            this.numero.HeaderText = "numero";
-            this.numero.Name = "numero";
-            this.numero.Visible = false;
-            // 
-            // importe
-            // 
-            this.importe.HeaderText = "Importe";
-            this.importe.Name = "importe";
-            this.importe.Width = 147;
             // 
             // chequeEmision
             // 

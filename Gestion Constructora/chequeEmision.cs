@@ -82,6 +82,10 @@ namespace Gestion_Constructora
                     this.btn_nuevo.Enabled = true;
                     this.btn_editar.Enabled = true;
                     this.btn_eliminar.Enabled = true;
+                    this.dgv_chequera.Enabled = true;
+                    this.dgv_cheque.Enabled = true;
+                    this.txt_busquedaChequera.Enabled = true;
+                    this.txt_busquedaCheque.Enabled = true;
                     break;
                 case 1://nuevo
                     this.pnl_datos.Enabled = true;
@@ -89,9 +93,13 @@ namespace Gestion_Constructora
                     this.dtp_fechaEmision.Value = DateTime.Today;
                     this.txt_numero.Text = String.Empty;
                     this.txt_importe.Text = String.Empty;
+                    this.dgv_chequera.Enabled = false;
+                    this.dgv_cheque.Enabled = false;
                     this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
+                    this.txt_busquedaChequera.Enabled = false;
+                    this.txt_busquedaCheque.Enabled = false;
                     break;
                 case 2://editar
                     this.pnl_datos.Enabled = true;
@@ -130,6 +138,7 @@ namespace Gestion_Constructora
                     this.txt_numero.Text = Convert.ToString(cheque.CurrentRow.Cells[6].Value);
                     this.txt_importe.Text = Convert.ToString(cheque.CurrentRow.Cells[7].Value);
                     this.txt_busquedaPersona.Text = Convert.ToString(cheque.CurrentRow.Cells[3].Value);
+                    idPersona = Convert.ToInt32(cheque.CurrentRow.Cells[2].Value);
                 }
                 else
                 {
@@ -148,10 +157,10 @@ namespace Gestion_Constructora
             switch (estadoControles)
             {
                 case 1:
-                    this.insertar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
+                    this.insertar(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), procedures.stringToCurrencyMySQL(this.txt_importe.Text));
                     break;
                 case 2:
-                    this.actualizar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), this.txt_importe.Text);
+                    this.actualizar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value), Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value), idPersona, procedures.dateToMySQL(this.dtp_fechaPago), procedures.dateToMySQL(this.dtp_fechaEmision), Convert.ToInt32(this.txt_numero.Text), procedures.stringToCurrencyMySQL(this.txt_importe.Text));
                     break;
                 case 3:
                     this.eliminar(Convert.ToInt32(this.dgv_cheque.CurrentRow.Cells[0].Value));
@@ -179,7 +188,6 @@ namespace Gestion_Constructora
         {
             this.dgv_chequera.Rows.Clear();
 
-            MySqlParameter prmBusqueda = new MySqlParameter("@nombre", MySqlDbType.VarChar);
             MySqlCommand consulta = new MySqlCommand("SELECT chequera.id, chequera.fecha, bancocuenta.numero, banco.nombre FROM chequera INNER JOIN bancocuenta ON (chequera.idCuenta = bancocuenta.id) INNER JOIN banco ON (bancocuenta.idBanco = banco.id) WHERE banco.nombre LIKE @nombre", procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try
@@ -191,7 +199,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        this.dgv_chequera.Rows.Add(reader[0], reader[3], reader[2], reader[9]);
+                        this.dgv_chequera.Rows.Add(reader[0], reader[3], reader[2], reader[1]);
                     }
                 }
             }
@@ -219,9 +227,35 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        this.dgv_cheque.Rows.Add(reader[0], reader[1], reader[2], reader[8], reader[3], reader[4], reader[5], reader[6]);
+                        this.dgv_cheque.Rows.Add(reader[0], reader[1], reader[2], reader[8], reader[3], reader[4], reader[5], procedures.stringToCurrencyTextbox(Convert.ToString(reader[6])));
                     }
                 }  
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            procedures.conexion2.Close();
+        }
+
+        private void buscarChequeNumero(string numero)
+        {
+            this.dgv_cheque.Rows.Clear();
+
+            MySqlCommand consulta = new MySqlCommand("SELECT * FROM chequepropio INNER JOIN persona ON (chequepropio.idPersona = persona.id) WHERE chequepropio.numero LIKE @numero", procedures.conexion2);
+            consulta.Parameters.AddWithValue("@numero", Convert.ToString(numero) + "%");
+            try
+            {
+                procedures.conexion2.Open();
+                MySqlDataReader reader = consulta.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        this.dgv_cheque.Rows.Add(reader[0], reader[1], reader[2], reader[8], reader[3], reader[4], reader[5], procedures.stringToCurrencyTextbox(Convert.ToString(reader[6])));
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -237,13 +271,13 @@ namespace Gestion_Constructora
             MySqlParameter prmFechaPago = new MySqlParameter("@fechaPago", MySqlDbType.Date);
             MySqlParameter prmFechaEmision = new MySqlParameter("@fechaEmision", MySqlDbType.Date);
             MySqlParameter prmNumero = new MySqlParameter("@numero", MySqlDbType.Int32);
-            MySqlParameter prmImporte = new MySqlParameter("@importe", MySqlDbType.Float);
+            MySqlParameter prmImporte = new MySqlParameter("@importe", MySqlDbType.VarChar);
             prmIdChequera.Value = Convert.ToInt32(idChequera);
             prmIdPersona.Value = Convert.ToInt32(idPersona);
             prmFechaPago.Value = Convert.ToDateTime(fechaPago);
             prmFechaEmision.Value = Convert.ToDateTime(fechaEmision);
             prmNumero.Value = Convert.ToInt32(numero);
-            prmImporte.Value = Convert.ToDouble(importe);
+            prmImporte.Value = Convert.ToString(importe);
             MySqlCommand mycmd = new MySqlCommand("INSERT INTO chequepropio (idChequera, idPersona, fechaPago, fechaEmision, numero, importe) VALUES (@idChequera, @idPersona, @fechaPago, @fechaEmision, @numero, @importe)", procedures.conexion);
             mycmd.Parameters.Add(prmIdChequera);
             mycmd.Parameters.Add(prmIdPersona);
@@ -271,14 +305,14 @@ namespace Gestion_Constructora
             MySqlParameter prmFechaPago = new MySqlParameter("@fechaPago", MySqlDbType.Date);
             MySqlParameter prmFechaEmision = new MySqlParameter("@fechaEmision", MySqlDbType.Date);
             MySqlParameter prmNumero = new MySqlParameter("@numero", MySqlDbType.Int32);
-            MySqlParameter prmImporte = new MySqlParameter("@importe", MySqlDbType.Float);
+            MySqlParameter prmImporte = new MySqlParameter("@importe", MySqlDbType.VarChar);
             prmId.Value = Convert.ToInt32(id);
             prmIdChequera.Value = Convert.ToInt32(idChequera);
             prmIdPersona.Value = Convert.ToInt32(idPersona);
             prmFechaPago.Value = Convert.ToDateTime(fechaPago);
             prmFechaEmision.Value = Convert.ToDateTime(fechaEmision);
             prmNumero.Value = Convert.ToInt32(numero);
-            prmImporte.Value = Convert.ToDouble(importe);
+            prmImporte.Value = Convert.ToString(importe);
             MySqlCommand mycmd = new MySqlCommand("UPDATE chequepropio SET idChequera = @idChequera, idPersona = @idPersona, fechaPago = @fechaPago, fechaEmision = @fechaEmision, numero = @numero, importe = @importe WHERE id = @id", procedures.conexion);
             mycmd.Parameters.Add(prmId);
             mycmd.Parameters.Add(prmIdChequera);
@@ -325,6 +359,38 @@ namespace Gestion_Constructora
         private void chequeEmision_Activated(object sender, EventArgs e)
         {
             this.txt_busquedaPersona.Text = nombrePersona;
+        }
+
+        private void txt_importe_Leave(object sender, EventArgs e)
+        {
+            this.txt_importe.Text = procedures.stringToCurrencyTextbox(this.txt_importe.Text);
+        }
+        
+        private void txt_importe_Enter(object sender, EventArgs e)
+        {
+            if (this.txt_importe.Text != "")
+            {
+                this.txt_importe.Text = procedures.stringToCurrencyMySQL(this.txt_importe.Text);
+            }
+        }
+
+        private void dgv_cheque_SelectionChanged(object sender, EventArgs e)
+        {
+            this.cargarControles(this.dgv_cheque, this.dgv_chequera);
+        }
+
+        private void txt_busquedaCheque_TextChanged(object sender, EventArgs e)
+        {
+            string busqueda = this.txt_busquedaCheque.Text;
+            if (busqueda != "")
+            {
+                this.buscarChequeNumero(this.txt_busquedaCheque.Text);
+            }
+            else
+            {
+                this.buscarCheque(Convert.ToInt32(this.dgv_chequera.CurrentRow.Cells[0].Value));
+            }
+            
         }
     }
 }
