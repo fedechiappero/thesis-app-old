@@ -13,6 +13,12 @@ namespace Gestion_Constructora
 {
     public partial class personaBusquedaRapida : Form
     {
+        public string nombrePersona { get { return nombrePers; } }
+        public string idPersona { get { return idPers; } }
+
+        private string idPers;
+        private string nombrePers;
+
         public personaBusquedaRapida()
         {
             InitializeComponent();
@@ -57,6 +63,8 @@ namespace Gestion_Constructora
         private void dgv_persona_SelectionChanged(object sender, EventArgs e)
         {
             this.txt_persona.Text = Convert.ToString(this.dgv_persona.CurrentRow.Cells[1].Value);
+            this.nombrePers = this.txt_persona.Text;
+            this.idPers = Convert.ToString(this.dgv_persona.CurrentRow.Cells[0].Value);
         }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
@@ -66,14 +74,24 @@ namespace Gestion_Constructora
 
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
+            this.nombrePers = null;
+            this.idPers = null;
             this.Dispose();
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            chequeEmision.idPersona = Convert.ToInt32(this.dgv_persona.CurrentRow.Cells[0].Value);
-            chequeEmision.nombrePersona = Convert.ToString(this.dgv_persona.CurrentRow.Cells[1].Value);
             this.Dispose();
+        }
+
+        private void personaBusquedaRapida_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                this.nombrePers = null;
+                this.idPers = null;
+            }
+            
         }
     }
 }
