@@ -24,7 +24,7 @@ namespace Gestion_Constructora
             InitializeComponent();
             chequeEmision chequeEmision = this;
             procedures proc = new procedures();
-            //                         form         title             start position            resizable
+            //                         form                  title             start position            resizable
             proc.inicializarFormulario(chequeEmision, "Emisión de Cheque", FormStartPosition.CenterScreen, false);
             proc.inicializarGrid(this.dgv_chequera);
             proc.inicializarGrid(this.dgv_cheque);
@@ -33,7 +33,14 @@ namespace Gestion_Constructora
         private void button1_Click(object sender, EventArgs e)
         {
             personaBusquedaRapida personaBusquedaRapida = new personaBusquedaRapida();
+            personaBusquedaRapida.FormClosing += new FormClosingEventHandler(busquedaPersonaCerrando);
             personaBusquedaRapida.ShowDialog();
+        }
+
+        private void busquedaPersonaCerrando(object sender, FormClosingEventArgs e)
+        {
+            idPersona = Convert.ToInt32(((personaBusquedaRapida)sender).idPersona);
+            nombrePersona = ((personaBusquedaRapida)sender).nombrePersona;
         }
 
         private void chequeEmision_Load(object sender, EventArgs e)

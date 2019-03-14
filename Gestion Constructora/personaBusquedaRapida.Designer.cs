@@ -152,6 +152,7 @@
             this.Controls.Add(this.pnl_busqueda);
             this.Name = "personaBusquedaRapida";
             this.Text = "personaBusquedaRapida";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.personaBusquedaRapida_FormClosing);
             this.Load += new System.EventHandler(this.personaBusquedaRapida_Load);
             this.pnl_busqueda.ResumeLayout(false);
             this.pnl_busqueda.PerformLayout();
