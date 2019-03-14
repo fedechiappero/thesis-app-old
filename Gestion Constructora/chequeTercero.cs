@@ -16,5 +16,11 @@ namespace Gestion_Constructora
         {
             InitializeComponent();
         }
+
+        private void btn_busquedaLocalidad_Click(object sender, EventArgs e)
+        {
+            localidadBusquedaRapida localidadBusquedaRapida = new localidadBusquedaRapida();
+            localidadBusquedaRapida.ShowDialog();
+        }
     }
 }
