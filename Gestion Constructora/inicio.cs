@@ -97,5 +97,11 @@ namespace Gestion_Constructora
             chequeTercero chequeTercero = new chequeTercero();
             chequeTercero.ShowDialog();
         }
+
+        private void consultaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            chequeTerceroConsulta chequeTerceroConsulta = new chequeTerceroConsulta();
+            chequeTerceroConsulta.ShowDialog();
+        }
     }
 }

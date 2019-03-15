@@ -80,6 +80,12 @@
     <Compile Include="chequeTercero.Designer.cs">
       <DependentUpon>chequeTercero.cs</DependentUpon>
     </Compile>
+    <Compile Include="chequeTerceroConsulta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="chequeTerceroConsulta.Designer.cs">
+      <DependentUpon>chequeTerceroConsulta.cs</DependentUpon>
+    </Compile>
     <Compile Include="chequeTerceroDestino.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +184,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="chequeTercero.resx">
       <DependentUpon>chequeTercero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="chequeTerceroConsulta.resx">
+      <DependentUpon>chequeTerceroConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="chequeTerceroDestino.resx">
       <DependentUpon>chequeTerceroDestino.cs</DependentUpon>
