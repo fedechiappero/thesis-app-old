@@ -57,6 +57,11 @@
     <Compile Include="bancoCuenta.Designer.cs">
       <DependentUpon>bancoCuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="bancoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>bancoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="chequeEmision.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +86,21 @@
     <Compile Include="chequeTerceroDestino.Designer.cs">
       <DependentUpon>chequeTerceroDestino.cs</DependentUpon>
     </Compile>
+    <Compile Include="chequeTerceroDestinoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chequeTerceroDestinoDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="chequeTerceroTipo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="chequeTerceroTipo.Designer.cs">
       <DependentUpon>chequeTerceroTipo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="chequeTerceroTipoDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>chequeTerceroTipoDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="cuenta.cs">
       <SubType>Form</SubType>
@@ -206,6 +221,39 @@
     <EmbeddedResource Include="tarea.resx">
       <DependentUpon>tarea.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="bancoDataSet.xsc">
+      <DependentUpon>bancoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="bancoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>bancoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bancoDataSet.xss">
+      <DependentUpon>bancoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="chequeTerceroDestinoDataSet.xsc">
+      <DependentUpon>chequeTerceroDestinoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="chequeTerceroDestinoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>chequeTerceroDestinoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="chequeTerceroDestinoDataSet.xss">
+      <DependentUpon>chequeTerceroDestinoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="chequeTerceroTipoDataSet.xsc">
+      <DependentUpon>chequeTerceroTipoDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="chequeTerceroTipoDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>chequeTerceroTipoDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="chequeTerceroTipoDataSet.xss">
+      <DependentUpon>chequeTerceroTipoDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
