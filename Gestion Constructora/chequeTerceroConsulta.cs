@@ -196,7 +196,7 @@ namespace Gestion_Constructora
             this.buscar();
         }
 
-        private void totall()
+        private void total()
         {
             double importeTotal = 0;
             string importe = "";
@@ -206,17 +206,6 @@ namespace Gestion_Constructora
                 importe = importe.Replace(",", "");
                 importe = importe.Replace("$", "");
                 importeTotal += Convert.ToDouble(importe, culture);
-            }
-            this.txt_total.Text = importeTotal.ToString("C", culture);
-        }
-        private void total()
-        {
-            double importeTotal = 0;
-            string importe = "";
-            foreach (DataGridViewRow row in this.dgv_cheque.Rows)
-            {
-                importe = Convert.ToString(row.Cells["importe"].Value);
-                importeTotal += Convert.ToDouble(procedures.stringToCurrencyTextbox(importe));
             }
             this.txt_total.Text = importeTotal.ToString("C", culture);
         }
