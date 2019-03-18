@@ -126,10 +126,10 @@ namespace Gestion_Constructora
             switch (estadoControles)
             {
                 case 1:
-                    this.insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                    this.insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), CCryptorEngine.Encriptar(this.txt_password.Text.Trim()), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 2:
-                    this.actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), this.txt_password.Text.Trim(), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                    this.actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), CCryptorEngine.Encriptar(this.txt_password.Text.Trim()), Convert.ToInt16(this.cbo_nivel.SelectedItem));
                     break;
                 case 3:
                     this.eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));

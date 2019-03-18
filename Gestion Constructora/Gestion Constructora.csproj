@@ -62,6 +62,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>bancoDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="CCryptorEngine.cs" />
     <Compile Include="chequeEmision.cs">
       <SubType>Form</SubType>
     </Compile>

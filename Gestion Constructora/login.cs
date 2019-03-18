@@ -47,7 +47,7 @@ namespace Gestion_Constructora
             MySqlParameter prmUsuario = new MySqlParameter("@usuario", MySqlDbType.VarChar);
             MySqlParameter prmPassword = new MySqlParameter("@password", MySqlDbType.VarChar);
             prmUsuario.Value = Convert.ToString(usuario);
-            prmPassword.Value = Convert.ToString(password);
+            prmPassword.Value = CCryptorEngine.Encriptar(Convert.ToString(password));
             MySqlCommand mycmd = new MySqlCommand("SELECT * FROM usuario WHERE usuario = @usuario AND password = @password", procedures.conexion);
             mycmd.Parameters.Add(prmUsuario);
             mycmd.Parameters.Add(prmPassword);
