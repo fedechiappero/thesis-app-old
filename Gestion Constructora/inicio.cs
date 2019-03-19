@@ -109,5 +109,11 @@ namespace Gestion_Constructora
             condicionIva condicionIva = new condicionIva();
             condicionIva.ShowDialog();
         }
+
+        private void tiposDeDocumentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            documentoTipo documentoTipo = new documentoTipo();
+            documentoTipo.ShowDialog();
+        }
     }
 }

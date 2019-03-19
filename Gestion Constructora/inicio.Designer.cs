@@ -46,6 +46,7 @@
             this.consultaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBMDeDestinosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBMDeTiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeCondicionesDeIVAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,7 +54,8 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aBMDeCondicionesDeIVAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,6 +64,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.obrasToolStripMenuItem,
             this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
             this.salirToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -204,6 +207,13 @@
             this.aBMDeTiposToolStripMenuItem.Text = "ABM de Tipos";
             this.aBMDeTiposToolStripMenuItem.Click += new System.EventHandler(this.aBMDeTiposToolStripMenuItem_Click);
             // 
+            // aBMDeCondicionesDeIVAToolStripMenuItem
+            // 
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Name = "aBMDeCondicionesDeIVAToolStripMenuItem";
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Text = "ABM de Condiciones de IVA";
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCondicionesDeIVAToolStripMenuItem_Click);
+            // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -253,12 +263,20 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
-            // aBMDeCondicionesDeIVAToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.aBMDeCondicionesDeIVAToolStripMenuItem.Name = "aBMDeCondicionesDeIVAToolStripMenuItem";
-            this.aBMDeCondicionesDeIVAToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.aBMDeCondicionesDeIVAToolStripMenuItem.Text = "ABM de Condiciones de IVA";
-            this.aBMDeCondicionesDeIVAToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCondicionesDeIVAToolStripMenuItem_Click);
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tiposDeDocumentoToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(82, 20);
+            this.toolStripMenuItem2.Text = "Otros ABMs";
+            // 
+            // tiposDeDocumentoToolStripMenuItem
+            // 
+            this.tiposDeDocumentoToolStripMenuItem.Name = "tiposDeDocumentoToolStripMenuItem";
+            this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.tiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento";
+            this.tiposDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentoToolStripMenuItem_Click);
             // 
             // inicio
             // 
@@ -305,5 +323,7 @@
         private System.Windows.Forms.ToolStripMenuItem aBMDeDestinosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBMDeTiposToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBMDeCondicionesDeIVAToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tiposDeDocumentoToolStripMenuItem;
     }
 }

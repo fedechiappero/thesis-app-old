@@ -121,6 +121,12 @@
     <Compile Include="cuenta.Designer.cs">
       <DependentUpon>cuenta.cs</DependentUpon>
     </Compile>
+    <Compile Include="documentoTipo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="documentoTipo.Designer.cs">
+      <DependentUpon>documentoTipo.cs</DependentUpon>
+    </Compile>
     <Compile Include="localidadBusquedaRapida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +212,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cuenta.resx">
       <DependentUpon>cuenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="documentoTipo.resx">
+      <DependentUpon>documentoTipo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="localidadBusquedaRapida.resx">
       <DependentUpon>localidadBusquedaRapida.cs</DependentUpon>
