@@ -103,5 +103,11 @@ namespace Gestion_Constructora
             chequeTerceroConsulta chequeTerceroConsulta = new chequeTerceroConsulta();
             chequeTerceroConsulta.ShowDialog();
         }
+
+        private void aBMDeCondicionesDeIVAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            condicionIva condicionIva = new condicionIva();
+            condicionIva.ShowDialog();
+        }
     }
 }

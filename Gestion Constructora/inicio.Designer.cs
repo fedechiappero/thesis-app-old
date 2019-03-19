@@ -53,6 +53,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBMDeCondicionesDeIVAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +106,8 @@
             this.bancosToolStripMenuItem,
             this.chequesPropiosToolStripMenuItem,
             this.aBMDeCuentasToolStripMenuItem,
-            this.chequesDeTercerosToolStripMenuItem});
+            this.chequesDeTercerosToolStripMenuItem,
+            this.aBMDeCondicionesDeIVAToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(157, 20);
             this.toolStripMenuItem1.Text = "Administración y Finanzas";
@@ -116,7 +118,7 @@
             this.aBMDeBancosToolStripMenuItem,
             this.altaDeCuentasPropiasToolStripMenuItem});
             this.bancosToolStripMenuItem.Name = "bancosToolStripMenuItem";
-            this.bancosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.bancosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.bancosToolStripMenuItem.Text = "Bancos";
             // 
             // aBMDeBancosToolStripMenuItem
@@ -139,7 +141,7 @@
             this.altaDeChequerasToolStripMenuItem,
             this.emisionDeChequesToolStripMenuItem});
             this.chequesPropiosToolStripMenuItem.Name = "chequesPropiosToolStripMenuItem";
-            this.chequesPropiosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.chequesPropiosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.chequesPropiosToolStripMenuItem.Text = "Cheques Propios";
             // 
             // altaDeChequerasToolStripMenuItem
@@ -159,7 +161,7 @@
             // aBMDeCuentasToolStripMenuItem
             // 
             this.aBMDeCuentasToolStripMenuItem.Name = "aBMDeCuentasToolStripMenuItem";
-            this.aBMDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.aBMDeCuentasToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.aBMDeCuentasToolStripMenuItem.Text = "ABM de Cuentas";
             this.aBMDeCuentasToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCuentasToolStripMenuItem_Click);
             // 
@@ -171,7 +173,7 @@
             this.aBMDeDestinosToolStripMenuItem,
             this.aBMDeTiposToolStripMenuItem});
             this.chequesDeTercerosToolStripMenuItem.Name = "chequesDeTercerosToolStripMenuItem";
-            this.chequesDeTercerosToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.chequesDeTercerosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
             this.chequesDeTercerosToolStripMenuItem.Text = "Cheques de Terceros";
             // 
             // aBMDeChequesToolStripMenuItem
@@ -251,6 +253,13 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
+            // aBMDeCondicionesDeIVAToolStripMenuItem
+            // 
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Name = "aBMDeCondicionesDeIVAToolStripMenuItem";
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Text = "ABM de Condiciones de IVA";
+            this.aBMDeCondicionesDeIVAToolStripMenuItem.Click += new System.EventHandler(this.aBMDeCondicionesDeIVAToolStripMenuItem_Click);
+            // 
             // inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -295,5 +304,6 @@
         private System.Windows.Forms.ToolStripMenuItem consultaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBMDeDestinosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBMDeTiposToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBMDeCondicionesDeIVAToolStripMenuItem;
     }
 }
