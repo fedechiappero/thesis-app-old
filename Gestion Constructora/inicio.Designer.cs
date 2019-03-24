@@ -51,6 +51,7 @@
             this.tiposDeDocumentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estadosDeObraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medioDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modoDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -58,7 +59,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modoDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeComprobanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -223,7 +224,8 @@
             this.tiposDeDocumentoToolStripMenuItem,
             this.estadosDeObraToolStripMenuItem,
             this.medioDePagoToolStripMenuItem,
-            this.modoDePagoToolStripMenuItem});
+            this.modoDePagoToolStripMenuItem,
+            this.tipoDeComprobanteToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(82, 20);
             this.toolStripMenuItem2.Text = "Otros ABMs";
@@ -231,23 +233,30 @@
             // tiposDeDocumentoToolStripMenuItem
             // 
             this.tiposDeDocumentoToolStripMenuItem.Name = "tiposDeDocumentoToolStripMenuItem";
-            this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.tiposDeDocumentoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.tiposDeDocumentoToolStripMenuItem.Text = "Tipos de Documento";
             this.tiposDeDocumentoToolStripMenuItem.Click += new System.EventHandler(this.tiposDeDocumentoToolStripMenuItem_Click);
             // 
             // estadosDeObraToolStripMenuItem
             // 
             this.estadosDeObraToolStripMenuItem.Name = "estadosDeObraToolStripMenuItem";
-            this.estadosDeObraToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.estadosDeObraToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.estadosDeObraToolStripMenuItem.Text = "Estados de Obra";
             this.estadosDeObraToolStripMenuItem.Click += new System.EventHandler(this.estadosDeObraToolStripMenuItem_Click);
             // 
             // medioDePagoToolStripMenuItem
             // 
             this.medioDePagoToolStripMenuItem.Name = "medioDePagoToolStripMenuItem";
-            this.medioDePagoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.medioDePagoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.medioDePagoToolStripMenuItem.Text = "Medio de Pago";
             this.medioDePagoToolStripMenuItem.Click += new System.EventHandler(this.medioDePagoToolStripMenuItem_Click);
+            // 
+            // modoDePagoToolStripMenuItem
+            // 
+            this.modoDePagoToolStripMenuItem.Name = "modoDePagoToolStripMenuItem";
+            this.modoDePagoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.modoDePagoToolStripMenuItem.Text = "Modo de Pago";
+            this.modoDePagoToolStripMenuItem.Click += new System.EventHandler(this.modoDePagoToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -298,12 +307,12 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
-            // modoDePagoToolStripMenuItem
+            // tipoDeComprobanteToolStripMenuItem
             // 
-            this.modoDePagoToolStripMenuItem.Name = "modoDePagoToolStripMenuItem";
-            this.modoDePagoToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
-            this.modoDePagoToolStripMenuItem.Text = "Modo de Pago";
-            this.modoDePagoToolStripMenuItem.Click += new System.EventHandler(this.modoDePagoToolStripMenuItem_Click);
+            this.tipoDeComprobanteToolStripMenuItem.Name = "tipoDeComprobanteToolStripMenuItem";
+            this.tipoDeComprobanteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.tipoDeComprobanteToolStripMenuItem.Text = "Tipo de Comprobante";
+            this.tipoDeComprobanteToolStripMenuItem.Click += new System.EventHandler(this.tipoDeComprobanteToolStripMenuItem_Click);
             // 
             // inicio
             // 
@@ -355,5 +364,6 @@
         private System.Windows.Forms.ToolStripMenuItem estadosDeObraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem medioDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modoDePagoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tipoDeComprobanteToolStripMenuItem;
     }
 }

@@ -133,5 +133,11 @@ namespace Gestion_Constructora
             modoPago modoPago = new modoPago();
             modoPago.ShowDialog();
         }
+
+        private void tipoDeComprobanteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            comprobanteTipo comprobanteTipo = new comprobanteTipo();
+            comprobanteTipo.ShowDialog();
+        }
     }
 }
