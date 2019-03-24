@@ -127,5 +127,11 @@ namespace Gestion_Constructora
             medioPago medioPago = new medioPago();
             medioPago.ShowDialog();
         }
+
+        private void modoDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            modoPago modoPago = new modoPago();
+            modoPago.ShowDialog();
+        }
     }
 }

@@ -139,6 +139,12 @@
     <Compile Include="medioPago.Designer.cs">
       <DependentUpon>medioPago.cs</DependentUpon>
     </Compile>
+    <Compile Include="modoPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modoPago.Designer.cs">
+      <DependentUpon>modoPago.cs</DependentUpon>
+    </Compile>
     <Compile Include="obraEstado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="medioPago.resx">
       <DependentUpon>medioPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="modoPago.resx">
+      <DependentUpon>modoPago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obraEstado.resx">
       <DependentUpon>obraEstado.cs</DependentUpon>

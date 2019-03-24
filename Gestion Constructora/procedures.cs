@@ -25,6 +25,7 @@ namespace Gestion_Constructora
             {
                 login.FormBorderStyle = FormBorderStyle.FixedSingle;
             }
+            //login.MaximizeBox = false; NEW PROPERTY TO CHECK
         }
 
         public void inicializarGrid(DataGridView grid)
