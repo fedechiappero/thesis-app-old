@@ -121,5 +121,11 @@ namespace Gestion_Constructora
             obraEstado obraEstado = new obraEstado();
             obraEstado.ShowDialog();
         }
+
+        private void medioDePagoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            medioPago medioPago = new medioPago();
+            medioPago.ShowDialog();
+        }
     }
 }
