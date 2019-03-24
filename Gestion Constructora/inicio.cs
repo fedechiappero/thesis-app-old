@@ -115,5 +115,11 @@ namespace Gestion_Constructora
             documentoTipo documentoTipo = new documentoTipo();
             documentoTipo.ShowDialog();
         }
+
+        private void estadosDeObraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            obraEstado obraEstado = new obraEstado();
+            obraEstado.ShowDialog();
+        }
     }
 }

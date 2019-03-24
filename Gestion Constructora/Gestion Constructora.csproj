@@ -133,6 +133,12 @@
     <Compile Include="localidadBusquedaRapida.Designer.cs">
       <DependentUpon>localidadBusquedaRapida.cs</DependentUpon>
     </Compile>
+    <Compile Include="obraEstado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="obraEstado.Designer.cs">
+      <DependentUpon>obraEstado.cs</DependentUpon>
+    </Compile>
     <Compile Include="personaBusquedaRapida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="localidadBusquedaRapida.resx">
       <DependentUpon>localidadBusquedaRapida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="obraEstado.resx">
+      <DependentUpon>obraEstado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="personaBusquedaRapida.resx">
       <DependentUpon>personaBusquedaRapida.cs</DependentUpon>
