@@ -139,5 +139,11 @@ namespace Gestion_Constructora
             comprobanteTipo comprobanteTipo = new comprobanteTipo();
             comprobanteTipo.ShowDialog();
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            persona persona = new persona();
+            persona.ShowDialog();
+        }
     }
 }

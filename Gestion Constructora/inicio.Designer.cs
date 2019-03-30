@@ -52,6 +52,7 @@
             this.estadosDeObraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.medioDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modoDePagoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tipoDeComprobanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirDelSistemaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -59,7 +60,7 @@
             this.acercaDeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.aBMDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tipoDeComprobanteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -221,6 +222,7 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
             this.tiposDeDocumentoToolStripMenuItem,
             this.estadosDeObraToolStripMenuItem,
             this.medioDePagoToolStripMenuItem,
@@ -257,6 +259,13 @@
             this.modoDePagoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.modoDePagoToolStripMenuItem.Text = "Modo de Pago";
             this.modoDePagoToolStripMenuItem.Click += new System.EventHandler(this.modoDePagoToolStripMenuItem_Click);
+            // 
+            // tipoDeComprobanteToolStripMenuItem
+            // 
+            this.tipoDeComprobanteToolStripMenuItem.Name = "tipoDeComprobanteToolStripMenuItem";
+            this.tipoDeComprobanteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.tipoDeComprobanteToolStripMenuItem.Text = "Tipo de Comprobante";
+            this.tipoDeComprobanteToolStripMenuItem.Click += new System.EventHandler(this.tipoDeComprobanteToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -307,12 +316,12 @@
             this.aBMDeUsuariosToolStripMenuItem.Text = "ABM de Usuarios";
             this.aBMDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.aBMDeUsuariosToolStripMenuItem_Click);
             // 
-            // tipoDeComprobanteToolStripMenuItem
+            // toolStripMenuItem3
             // 
-            this.tipoDeComprobanteToolStripMenuItem.Name = "tipoDeComprobanteToolStripMenuItem";
-            this.tipoDeComprobanteToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.tipoDeComprobanteToolStripMenuItem.Text = "Tipo de Comprobante";
-            this.tipoDeComprobanteToolStripMenuItem.Click += new System.EventHandler(this.tipoDeComprobanteToolStripMenuItem_Click);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(191, 22);
+            this.toolStripMenuItem3.Text = "Persona";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // inicio
             // 
@@ -365,5 +374,6 @@
         private System.Windows.Forms.ToolStripMenuItem medioDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modoDePagoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tipoDeComprobanteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
     }
 }
