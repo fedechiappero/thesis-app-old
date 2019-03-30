@@ -17,15 +17,17 @@ namespace Gestion_Constructora
 
         public static CultureInfo culture = new CultureInfo("en-US");
 
-        public void inicializarFormulario(Form login, string titulo, FormStartPosition posicion, bool redimensionable)
+        public void inicializarFormulario(Form frm, string titulo, FormStartPosition posicion, bool redimensionable)
         {
-            login.Text = titulo;
-            login.StartPosition = posicion; 
+            frm.Text = titulo;
+            frm.StartPosition = posicion; 
             if (!redimensionable)
             {
-                login.FormBorderStyle = FormBorderStyle.FixedSingle;
+                frm.FormBorderStyle = FormBorderStyle.FixedSingle;
             }
-            //login.MaximizeBox = false; NEW PROPERTY TO CHECK
+            //this property prevent user click on button to detach form from full screen
+            //but not when title bar is double clicked, and the window cover the taskbar (kinda ugly)
+            //frm.MaximizeBox = false;
         }
 
         public void inicializarGrid(DataGridView grid)

@@ -21,7 +21,7 @@ namespace Gestion_Constructora
             InitializeComponent();
             usuario usuario = this;
             procedures proc = new procedures();
-            //                 form         title                start position          resizable
+            //                          form         title                start position          resizable
             proc.inicializarFormulario(usuario, "ABM de Usuarios", FormStartPosition.CenterScreen, false);
             proc.inicializarGrid(this.dgv_usuario);
         }
@@ -29,11 +29,6 @@ namespace Gestion_Constructora
         private void usuario_Load(object sender, EventArgs e)
         {
             this.buscar();
-        }
-
-        private void btn_nuevo_Click(object sender, EventArgs e)
-        {
-            this.cambiarControles(1);
         }
 
         private void btn_editar_Click(object sender, EventArgs e)
@@ -68,34 +63,38 @@ namespace Gestion_Constructora
                 case 0://inicio
                     this.buscar();
                     this.pnl_datos.Enabled = false;
+                    this.dgv_usuario.Enabled = true;
+                    this.txt_busqueda.Enabled = true;
                     this.btn_aceptar.ForeColor = Color.Black;
-                    this.btn_nuevo.Enabled = true;
+                    this.txt_password.Text = String.Empty;
+                    this.txt_confirma.Text = String.Empty;
                     this.btn_editar.Enabled = true;
                     this.btn_eliminar.Enabled = true;
                     break;
-                case 1://nuevo
+                case 1://nuevo (USELESS CODE)
                     this.pnl_datos.Enabled = true;
-                    this.txt_celular.Text = String.Empty;
-                    this.txt_email.Text = String.Empty;
-                    this.txt_nombre.Text = String.Empty;
-                    this.txt_nombre.Focus();
+                    this.dgv_usuario.Enabled = false;
+                    this.txt_busqueda.Enabled = false;
                     this.txt_usuario.Text = String.Empty;
                     this.txt_password.Text = String.Empty;
+                    this.txt_confirma.Text = String.Empty;
                     this.cbo_nivel.SelectedIndex = 0;
-                    this.btn_nuevo.Enabled = false;
+                    this.txt_usuario.Focus();
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
                 case 2://editar
+                    this.dgv_usuario.Enabled = false;
+                    this.txt_busqueda.Enabled = false;
                     this.pnl_datos.Enabled = true;
-                    this.txt_nombre.Focus();
-                    this.btn_nuevo.Enabled = false;
+                    this.txt_usuario.Focus();
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
                 case 3://eliminar
+                    this.dgv_usuario.Enabled = false;
+                    this.txt_busqueda.Enabled = false;
                     this.btn_aceptar.ForeColor = Color.Red;
-                    this.btn_nuevo.Enabled = false;
                     this.btn_editar.Enabled = false;
                     this.btn_eliminar.Enabled = false;
                     break;
@@ -108,12 +107,16 @@ namespace Gestion_Constructora
 
         private void cargarControles(DataGridView dgv)
         {
-            this.txt_celular.Text = Convert.ToString(dgv.CurrentRow.Cells[1].Value);
-            this.txt_email.Text = Convert.ToString(dgv.CurrentRow.Cells[2].Value);
-            this.txt_nombre.Text = Convert.ToString(dgv.CurrentRow.Cells[3].Value);
-            this.txt_usuario.Text = Convert.ToString(dgv.CurrentRow.Cells[4].Value);
-            this.txt_password.Text = Convert.ToString(dgv.CurrentRow.Cells[5].Value);
-            this.cbo_nivel.SelectedItem = Convert.ToString(dgv.CurrentRow.Cells[6].Value);
+            if (Convert.ToString(dgv.CurrentRow.Cells[2].Value) == String.Empty)
+            {
+                this.txt_usuario.Text = String.Empty;
+                this.cbo_nivel.SelectedIndex = 0;
+            }
+            else
+            {
+                this.txt_usuario.Text = Convert.ToString(dgv.CurrentRow.Cells[2].Value);
+                this.cbo_nivel.SelectedItem = Convert.ToString(dgv.CurrentRow.Cells[3].Value);
+            }
         }
 
         private void dgv_usuario_SelectionChanged(object sender, EventArgs e)
@@ -123,22 +126,26 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            switch (estadoControles)
+            if (this.txt_password.Text != String.Empty && this.txt_password.Text == this.txt_confirma.Text || estadoControles == 3)
             {
-                case 1:
-                    this.insertar(this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), CCryptorEngine.Encriptar(this.txt_password.Text.Trim()), Convert.ToInt16(this.cbo_nivel.SelectedItem));
-                    break;
-                case 2:
-                    this.actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_nombre.Text.Trim(), this.txt_celular.Text.Trim(), this.txt_email.Text.Trim(), this.txt_usuario.Text.Trim(), CCryptorEngine.Encriptar(this.txt_password.Text.Trim()), Convert.ToInt16(this.cbo_nivel.SelectedItem));
-                    break;
-                case 3:
-                    this.eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));
-                    break;
-                default:
-                    //something went wrong
-                    break;
+                switch (estadoControles)
+                {
+                    case 2:
+                        this.actualizar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value), this.txt_usuario.Text.Trim(), CCryptorEngine.Encriptar(this.txt_confirma.Text.Trim()), Convert.ToInt16(this.cbo_nivel.SelectedItem));
+                        break;
+                    case 3:
+                        this.eliminar(Convert.ToInt32(this.dgv_usuario.CurrentRow.Cells[0].Value));
+                        break;
+                    default:
+                        //something went wrong
+                        break;
+                }
+                this.cambiarControles(0);
             }
-            this.cambiarControles(0);
+            else
+            {
+                MessageBox.Show("Las contraseñas deben coincidir y no pueden estar en blanco", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -157,7 +164,18 @@ namespace Gestion_Constructora
         {
             this.dgv_usuario.Rows.Clear();
 
-            MySqlCommand consulta = new MySqlCommand("SELECT persona.id, persona.nombre, persona.celular, persona.email, usuario.usuario, usuario.password, usuario.nivel_acceso FROM persona INNER JOIN usuario ON (persona.id = usuario.id) WHERE persona.nombre LIKE @nombre AND usuario.activo = 1", procedures.conexion);
+            string command = "SELECT persona.id, persona.nombre, usuario.usuario, usuario.nivel_acceso FROM persona ";
+            
+            if (this.chk_buscarTodo.Checked)
+            {
+                command += "LEFT JOIN usuario ON (persona.id = usuario.id)";
+            }
+            else
+            {
+                command += "INNER JOIN usuario ON (persona.id = usuario.id) WHERE persona.nombre LIKE @nombre AND usuario.activo = 1";
+            }
+
+            MySqlCommand consulta = new MySqlCommand(command, procedures.conexion);
             consulta.Parameters.AddWithValue("@nombre", "%" + Convert.ToString(busqueda) + "%");
             try
             {
@@ -168,7 +186,7 @@ namespace Gestion_Constructora
                 {
                     while (reader.Read())
                     {
-                        this.dgv_usuario.Rows.Add(reader[0], reader[2], reader[3], reader[1], reader[4], reader[5], reader[6]);
+                        this.dgv_usuario.Rows.Add(reader[0], reader[1], reader[2], reader[3]);
                     }
                 }
             }
@@ -179,77 +197,26 @@ namespace Gestion_Constructora
             procedures.conexion.Close();
         }
 
-        private void insertar(string nombre, string celular, string email, string usuario, string password, int nivel)
-        {
-            MySqlParameter prmNombre = new MySqlParameter("@nombre", MySqlDbType.VarChar);
-            MySqlParameter prmCelular = new MySqlParameter("@celular", MySqlDbType.VarChar);
-            MySqlParameter prmEmail = new MySqlParameter("@email", MySqlDbType.VarChar);
-            prmNombre.Value = Convert.ToString(nombre);
-            prmCelular.Value = Convert.ToString(celular);
-            prmEmail.Value = Convert.ToString(email);
-            MySqlCommand cmdPersona = new MySqlCommand("INSERT INTO persona (nombre, celular, email) VALUES (@nombre, @celular, @email); SELECT LAST_INSERT_ID()", procedures.conexion);
-            cmdPersona.Parameters.Add(prmNombre);
-            cmdPersona.Parameters.Add(prmCelular);
-            cmdPersona.Parameters.Add(prmEmail);
-            MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
-            MySqlParameter prmUsuario = new MySqlParameter("@usuario", MySqlDbType.VarChar);
-            MySqlParameter prmPassword = new MySqlParameter("@password", MySqlDbType.VarChar);
-            MySqlParameter prmNivel = new MySqlParameter("@nivel", MySqlDbType.Int16);
-            prmUsuario.Value = Convert.ToString(usuario);
-            prmPassword.Value = Convert.ToString(password);
-            prmNivel.Value = Convert.ToInt16(nivel);
-            MySqlCommand cmdEmpleado = new MySqlCommand("INSERT INTO usuario (id, usuario, password, nivel_acceso) VALUES (@id, @usuario, @password, @nivel)", procedures.conexion);
-            cmdEmpleado.Parameters.Add(prmUsuario);
-            cmdEmpleado.Parameters.Add(prmPassword);
-            cmdEmpleado.Parameters.Add(prmNivel);
-            try
-            {
-                procedures.conexion.Open();
-                int idPersona = Convert.ToInt32(cmdPersona.ExecuteScalar());
-                prmId.Value = idPersona;
-                cmdEmpleado.Parameters.Add(prmId);
-                cmdEmpleado.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            procedures.conexion.Close();
-        }
-
-        private void actualizar(int id, string nombre, string celular, string email, string usuario, string password, int nivel)
+        private void actualizar(int id, string usuario, string password, int nivel)
         {
             MySqlParameter prmId = new MySqlParameter("@id", MySqlDbType.Int32);
-            MySqlParameter prmNombre = new MySqlParameter("@nombre", MySqlDbType.VarChar);
-            MySqlParameter prmCelular = new MySqlParameter("@celular", MySqlDbType.VarChar);
-            MySqlParameter prmEmail = new MySqlParameter("@email", MySqlDbType.VarChar);
             MySqlParameter prmUsuario = new MySqlParameter("@usuario", MySqlDbType.VarChar);
             MySqlParameter prmPassword = new MySqlParameter("@password", MySqlDbType.VarChar);
             MySqlParameter prmNivel = new MySqlParameter("@nivel", MySqlDbType.Int16);
             prmId.Value = Convert.ToInt32(id);
-            prmNombre.Value = Convert.ToString(nombre);
-            prmCelular.Value = Convert.ToString(celular);
-            prmEmail.Value = Convert.ToString(email);
             prmUsuario.Value = Convert.ToString(usuario);
             prmPassword.Value = Convert.ToString(password);
             prmNivel.Value = Convert.ToInt16(nivel);
 
-            MySqlCommand cmdPersona = new MySqlCommand("UPDATE persona SET nombre = @nombre, celular = @celular, email = @email WHERE id = @id", procedures.conexion);
-            cmdPersona.Parameters.Add(prmId);
-            cmdPersona.Parameters.Add(prmNombre);
-            cmdPersona.Parameters.Add(prmCelular);
-            cmdPersona.Parameters.Add(prmEmail);
-
-            MySqlCommand cmdEmpleado = new MySqlCommand("UPDATE usuario SET usuario = @usuario, password = @password, nivel_acceso = @nivel WHERE id = @id", procedures.conexion);
-            cmdEmpleado.Parameters.Add(prmId);
-            cmdEmpleado.Parameters.Add(prmUsuario);
-            cmdEmpleado.Parameters.Add(prmPassword);
-            cmdEmpleado.Parameters.Add(prmNivel);
+            MySqlCommand mycmd = new MySqlCommand("INSERT INTO usuario (id, usuario, password, nivel_acceso) VALUES (@id, @usuario, @password, @nivel) ON DUPLICATE KEY UPDATE usuario = @usuario, password = @password, nivel_acceso = @nivel", procedures.conexion);
+            mycmd.Parameters.Add(prmId);
+            mycmd.Parameters.Add(prmUsuario);
+            mycmd.Parameters.Add(prmPassword);
+            mycmd.Parameters.Add(prmNivel);
             try
             {
                 procedures.conexion.Open();
-                cmdPersona.ExecuteNonQuery();
-                cmdEmpleado.ExecuteNonQuery();
+                mycmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -277,6 +244,11 @@ namespace Gestion_Constructora
         }
 
         private void txt_busqueda_TextChanged(object sender, EventArgs e)
+        {
+            this.buscar(this.txt_busqueda.Text.Trim());
+        }
+
+        private void chk_usuario_CheckedChanged(object sender, EventArgs e)
         {
             this.buscar(this.txt_busqueda.Text.Trim());
         }
