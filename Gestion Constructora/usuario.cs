@@ -46,7 +46,7 @@ namespace Gestion_Constructora
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-            if (this.dgv_usuario.SelectedRows.Count > 0)
+            if (this.dgv_usuario.SelectedRows.Count > 0 && !(Convert.ToString(this.dgv_usuario.CurrentRow.Cells[2].Value).Equals(String.Empty)))
             {
                 this.cambiarControles(3);
             }
@@ -107,7 +107,7 @@ namespace Gestion_Constructora
 
         private void cargarControles(DataGridView dgv)
         {
-            if (Convert.ToString(dgv.CurrentRow.Cells[2].Value) == String.Empty)
+            if (Convert.ToString(dgv.CurrentRow.Cells[2].Value).Equals(String.Empty))
             {
                 this.txt_usuario.Text = String.Empty;
                 this.cbo_nivel.SelectedIndex = 0;
@@ -126,7 +126,7 @@ namespace Gestion_Constructora
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if (this.txt_password.Text != String.Empty && this.txt_password.Text == this.txt_confirma.Text || estadoControles == 3)
+            if ((!(this.txt_password.Text.Equals(String.Empty)) && this.txt_password.Text.Equals(this.txt_confirma.Text)) || estadoControles == 3)
             {
                 switch (estadoControles)
                 {
