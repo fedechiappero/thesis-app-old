@@ -121,6 +121,12 @@
     <Compile Include="condicionIva.Designer.cs">
       <DependentUpon>condicionIva.cs</DependentUpon>
     </Compile>
+    <Compile Include="contrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="contrato.Designer.cs">
+      <DependentUpon>contrato.cs</DependentUpon>
+    </Compile>
     <Compile Include="cuenta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -247,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="condicionIva.resx">
       <DependentUpon>condicionIva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="contrato.resx">
+      <DependentUpon>contrato.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="cuenta.resx">
       <DependentUpon>cuenta.cs</DependentUpon>

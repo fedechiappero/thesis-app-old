@@ -145,5 +145,11 @@ namespace Gestion_Constructora
             persona persona = new persona();
             persona.ShowDialog();
         }
+
+        private void aBMDeContratosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            contrato contrato = new contrato();
+            contrato.ShowDialog();
+        }
     }
 }
